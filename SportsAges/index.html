@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Alright Let's Do This</title>
+    <script type="text/javascript" src="d3/d3.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+    
+<body>
+    
+<form name="ageform",action="",method="get">
+Enter your birthday below:<br>
+<input type="date" name="inputbox" min="1900-01-01" max="2014-01-01" value="1980-01-01" step="1">
+<button id="button" type="button" onClick="record(this.form)">Submit</button>
+</form>  
+    
+<div id="numbers">
+<p>You are older than:</p>
+<ul>
+<li><span id='nflpercent'>0</span> percent of NFL players</li>
+<li><span id='nbapercent'>0</span> percent of NBA players</li>
+<li><span id='mlbpercent'>0</span> percent of MLB players</li>
+<li><span id='nhlpercent'>0</span> percent of NHL players</li>
+</ul>     
+</div>    
+    
+<script type="text/javascript">
+
+var future = new Date("2050-01-01");
+var birthdate = "";
+var gap = "";
+var printable = "";
+var nfl = [];
+var nba = [];
+var mlb = [];
+var nhl = [];
+d3.csv("nfl.csv", function(data) {
+    nfl = data;
+});
+d3.csv("nba.csv", function(data) {
+   nba = data;
+});
+d3.csv("mlb.csv", function(data) {
+   mlb = data;
+});
+d3.csv("nhl.csv", function(data) {
+   nhl = data;
+});
+    
+function record (form) {
+    var nflpercent = 0;
+    var nbapercent = 0;
+    var mlbpercent = 0;
+    var nhlpercent = 0;
+    birthdate = new Date(form.inputbox.value);
+    gap = (future - birthdate)/86400000;
+    
+    for(var i = 0; i <nfl.length; i++){
+    if(nfl[i].day<gap){
+    nflpercent +=1;
+    };
+    nflprint = Math.round(((nflpercent/nfl.length)*100)*10)/10;
+    };
+        
+    for(var i = 0; i <nba.length; i++){
+    if(nba[i].day<gap){
+    nbapercent +=1;
+    };
+    nbaprint = Math.round(((nbapercent/nba.length)*100)*10)/10;
+    };
+        
+    for(var i = 0; i <mlb.length; i++){
+    if(mlb[i].day<gap){
+    mlbpercent +=1;
+    };
+    mlbprint = Math.round(((mlbpercent/mlb.length)*100)*10)/10;
+    };
+        
+    for(var i = 0; i <nhl.length; i++){
+    if(nhl[i].day<gap){
+    nhlpercent +=1;
+    };
+    nhlprint = Math.round(((nhlpercent/nhl.length)*100)*10)/10;
+    };
+document.getElementById("nflpercent").innerHTML = nflprint;
+document.getElementById("nbapercent").innerHTML = nbaprint;
+document.getElementById("mlbpercent").innerHTML = mlbprint;
+document.getElementById("nhlpercent").innerHTML = nhlprint;
+};
+</script>
+</body>
+</html>
