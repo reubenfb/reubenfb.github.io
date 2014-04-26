@@ -9,102 +9,81 @@
     <body>
     <script type="text/javascript">
         
-    var dataset=[5,10,13,19,21,25,22,18,15,13,11,12,15,20,18,17,16,18,23,25];
+    var nfldataset=      [{ age: 15, value: 0 },	
+							{ age: 16, value: 0 },		
+							{ age: 17, value: 0 },
+							{ age: 18, value: 0 },
+							{ age: 19, value: 0 },
+							{ age: 20, value: 0 },
+							{ age: 21, value: 0.003851091 },
+							{ age: 22, value: 0.03465982 },
+							{ age: 23, value: 0.110825845 },
+							{ age: 24, value: 0.182284981 },
+							{ age: 25, value: 0.150620454 },
+							{ age: 26, value: 0.122807018 },
+							{ age: 27, value: 0.094993582 },
+							{ age: 28, value: 0.076593924 },
+							{ age: 29, value: 0.062473256 },
+							{ age: 30, value: 0.049636286 },
+							{ age: 31, value: 0.03465982 },
+							{ age: 32, value: 0.029097133 },
+							{ age: 33, value: 0.018399658 },
+							{ age: 34, value: 0.009413778 },
+                            { age: 35, value: 0.007702182 },
+                            { age: 36, value: 0.003423192 },
+                            { age: 37, value: 0.003423192 },
+                            { age: 38, value: 0.002567394 },
+                            { age: 39, value: 0.001283697 },
+                            { age: 40, value: 0.000427899 },
+                            { age: 41, value: 0.000855798 },
+                            { age: 42, value: 0 },
+                            { age: 43, value: 0 },
+                            { age: 44, value: 0 },
+                            { age: 45, value: 0 }];
         
-    var w = 600;
-    var h = 250;
+    var w = 170;
+    var h = 170;
+    var padding = 6;
         
-    var xScale = d3.scale.ordinal()
-        .domain(d3.range(dataset.length))
-        .rangeRoundBands([0,w],0.05);
+    var xScale = d3.scale.linear()
+        .domain([15,45])
+        .range([padding,w-padding]);
         
     var yScale = d3.scale.linear()
-        .domain([0, d3.max(dataset)])
-        .range([0, h]);
+        .domain([0, 0.2])
+        .range([0, h-padding-14]);
+    
+   var xAxis = d3.svg.axis()
+        .scale(xScale)
+        .orient("bottom")
+        .ticks(7)
+        .tickSize(4);
         
     var svg = d3.select("body")
         .append("svg")
         .attr("width", w)
         .attr("height", h);
-        
+    
     svg.selectAll("rect")
-        .data(dataset)
+        .data(nfldataset)
         .enter()
         .append("rect")
-        .attr("x",function(d,i){
-            return xScale(i);
+        .attr("x",function(d){
+            return xScale(d.age);
         })
         .attr("y",function(d){
-            return h - yScale(d);
+            return (h-padding)-14 - yScale(d.value);
         })
-        .attr("width",xScale.rangeBand())
+        .attr("width",(w)/nfldataset.length)
         .attr("height",function(d){
-            return yScale(d);
-        })
-        .attr("fill",function(d){
-            return "rgb(0, 0, " + (d * 10) + ")";
-        })
-        
-    svg.selectAll("text")
-        .data(dataset)
-        .enter()
-        .append("text")
-        .text(function(d){
-            return d;
-        })
-        .attr("x",function(d,i){
-            return xScale(i) + xScale.rangeBand() / 2;
-        })
-        .attr("y",function(d){
-            return h - yScale(d) + 14;
-        })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "11px")
-        .attr("fill", "white")
-        .attr("text-anchor", "middle");
-        
-    d3.select("svg")
-        .on("click", function(){
-            var numValues = dataset.length;
-            dataset = [];
-            var maxValue = 100;
-            for(var i = 0; i <numValues ; i++){
-            var newNumber = Math.floor(Math.random()*maxValue);
-            dataset.push(newNumber);
-            }
-        yScale.domain([0, d3.max(dataset)]);
-        svg.selectAll("rect")
-        .data(dataset)
-        .transition()
-        .delay(function(d,i){
-            return i/dataset.length*1000;})
-        .duration(1000)
-        .attr("y",function(d){
-            return h -yScale(d);
-        })
-        .attr("fill",function(d){
-            return "rgb(0, 0, " + (d * 10) + ")";
-        })
-        .attr("height",function(d){
-            return yScale(d);    
+            return yScale(d.value);
         });
-            
-         svg.selectAll("text")
-        .data(dataset)
-        .transition()
-        .delay(function(d,i){
-            return i/dataset.length*1000;})
-        .duration(1000)
-        .text(function(d){
-            return d;
-        })
-        .attr("x",function(d,i){
-            return xScale(i) + xScale.rangeBand() / 2;
-        })
-        .attr("y",function(d){
-            return h - yScale(d) + 14;
-        })
-        });
+    
+    svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + (h-padding-14) + ")")
+        .call(xAxis);
+        
     </script>       
     </body>
 </html>
