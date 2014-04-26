@@ -1,5 +1,6 @@
 body{
 font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+<<<<<<< HEAD
 }
 #nflsvg rect:hover{
     fill: white;
@@ -86,3 +87,27 @@ input {
 #nflpercent, #nbapercent, #mlbpercent, #nhlpercent{
     color: rgb(245,94,80);
 }
+=======
+
+}
+input {
+    font-size: 25px;
+    border:black solid 2px;
+    width: 230px;
+    height: 33px;
+}
+#button{
+    position:absolute;
+    top: 34px;
+    left: 248px;
+}
+#numbers{
+    position:absolute;
+    top: 60px;
+    font-size: 20px;
+}
+span{
+    color: red;
+}
+
+>>>>>>> FETCH_HEAD

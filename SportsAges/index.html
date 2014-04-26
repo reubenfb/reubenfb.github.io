@@ -8,6 +8,7 @@
 </head>
     
 <body>
+<<<<<<< HEAD
 <div id="calculator">
 <form name="ageform",action="",method="get">
 Enter your birthday:<br>
@@ -28,6 +29,31 @@ Enter your birthday:<br>
 var future = new Date("2050-01-01");
 var birthdate = "";
 var gap = "";
+=======
+    
+<form name="ageform",action="",method="get">
+Enter your birthday below:<br>
+<input type="date" name="inputbox" min="1900-01-01" max="2014-01-01" value="1980-01-01" step="1">
+<button id="button" type="button" onClick="record(this.form)">Submit</button>
+</form>  
+    
+<div id="numbers">
+<p>You are older than:</p>
+<ul>
+<li><span id='nflpercent'>0</span> percent of NFL players</li>
+<li><span id='nbapercent'>0</span> percent of NBA players</li>
+<li><span id='mlbpercent'>0</span> percent of MLB players</li>
+<li><span id='nhlpercent'>0</span> percent of NHL players</li>
+</ul>     
+</div>    
+    
+<script type="text/javascript">
+
+var future = new Date("2050-01-01");
+var birthdate = "";
+var gap = "";
+var printable = "";
+>>>>>>> FETCH_HEAD
 var nfl = [];
 var nba = [];
 var mlb = [];
@@ -44,6 +70,7 @@ d3.csv("mlb.csv", function(data) {
 d3.csv("nhl.csv", function(data) {
    nhl = data;
 });
+<<<<<<< HEAD
         
     var nfldataset=      [{ age: 15, value: 0 },	
 							{ age: 16, value: 0 },		
@@ -342,6 +369,8 @@ d3.csv("nhl.csv", function(data) {
         .attr("id","title")
         .style("text-anchor", "left")
         .text("NHL");
+=======
+>>>>>>> FETCH_HEAD
     
 function record (form) {
     var nflpercent = 0;
@@ -378,6 +407,7 @@ function record (form) {
     };
     nhlprint = Math.round(((nhlpercent/nhl.length)*100)*10)/10;
     };
+<<<<<<< HEAD
 document.getElementById("nflpercent").innerHTML = "<strong>"+nflprint+"</strong>";
 document.getElementById("nbapercent").innerHTML = "<strong>"+nbaprint+"</strong>";
 document.getElementById("mlbpercent").innerHTML = "<strong>"+mlbprint+"</strong>";
@@ -427,6 +457,13 @@ nhlsvg.selectAll("rect")
     });
 };
    
+=======
+document.getElementById("nflpercent").innerHTML = nflprint;
+document.getElementById("nbapercent").innerHTML = nbaprint;
+document.getElementById("mlbpercent").innerHTML = mlbprint;
+document.getElementById("nhlpercent").innerHTML = nhlprint;
+};
+>>>>>>> FETCH_HEAD
 </script>
 </body>
 </html>
