@@ -392,10 +392,10 @@ if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
     
 nflsvg.selectAll("rect")
         .transition()
-        .duration(250)
+        .duration(1000)
         .attr("fill",function(d){
         if(d.age>=trueage){
-        return "rgb(180,180,180)"
+        return "rgb(185,185,185)"
         }else{
         return "rgb(245,94,80)"
         };
@@ -403,10 +403,10 @@ nflsvg.selectAll("rect")
     
 nbasvg.selectAll("rect")
         .transition()
-        .duration(250)
+        .duration(1000)
         .attr("fill",function(d){
         if(d.age>=trueage){
-        return "rgb(180,180,180)"
+        return "rgb(185,185,185)"
         }else{
         return "rgb(82,167,220)"
         };
@@ -414,10 +414,10 @@ nbasvg.selectAll("rect")
 
 mlbsvg.selectAll("rect")
         .transition()
-        .duration(250)
+        .duration(1000)
         .attr("fill",function(d){
         if(d.age>=trueage){
-        return "rgb(180,180,180)"
+        return "rgb(185,185,185)"
         }else{
         return "rgb(96,185,101)"
         };
@@ -425,10 +425,10 @@ mlbsvg.selectAll("rect")
     
 nhlsvg.selectAll("rect")
         .transition()
-        .duration(250)
+        .duration(1000)
         .attr("fill",function(d){
         if(d.age>=trueage){
-        return "rgb(180,180,180)"
+        return "rgb(185,185,185)"
         }else{
         return "rgb(178,123,179)"
         };
