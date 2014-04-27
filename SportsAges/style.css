@@ -84,6 +84,6 @@ input {
     left: 196px;
 }
 #nflpercent, #nbapercent, #mlbpercent, #nhlpercent{
-    color: rgb(0,0,0);
+    color: rgb(255,90,0);
     font-size: 25px;
 }
