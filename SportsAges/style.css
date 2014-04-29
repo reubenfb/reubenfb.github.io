@@ -1,88 +1,40 @@
-body{
-font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-}
-#nflsvg rect:hover{
-    fill: white;
-}
-#nbasvg rect:hover{
-    fill: white;
-}
-#mlbsvg rect:hover{
-    fill: white;
-}
-#nhlsvg rect:hover{
-    fill: white;
-}
-svg{
-position: absolute;
-background: rgb(241,241,241);
-}
-#nflsvg{
-top: 0px;
-left: 0px;
-}
-#nbasvg{
-top: 0px;
-left: 180px;
-}
-#mlbsvg{
-top: 180px;
-left: 0px;
-}
-#nhlsvg{
-top: 180px;
-left: 180px;
-}
-#title {
-font-size: 22px;
-font-weight: bolder;
+body{font-family: "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;}
+
+text {font-size: 10px;fill: rgb(89,89,89);}
+rect:hover{fill: white;}
+svg{position: absolute;background: rgb(241,241,241);}
+
+input {
+    font-family: "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    font-size: 16px;
+    border:black solid 2px;
+    width: 183px;
+    height: 24px;
 }
 
-#nflsvg #title{
-fill: rgb(245,94,80);
-}
-#nbasvg #title{
-fill: rgb(82,167,220);
-}
-#mlbsvg #title{
-fill: rgb(96,185,101);
-}
-#nhlsvg #title{
-fill: rgb(178,123,179);
-}
+button{position:absolute;top: 23px;left: 205px;}
 
 .axis path,
-.axis line {
-fill: none;
-stroke: rgb(89,89,89);
-shape-rendering: crispEdges;
-}
-			
-text {
-font-size: 10px;
-fill: rgb(89,89,89);
-}
-
+.axis line {fill: none;stroke: rgb(89,89,89);shape-rendering: crispEdges;}
+	
 #calculator{
-    font-family: "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif; 
     position:absolute;
     left: 371px;
     top: 60px;
     font-size: 18px;
     color: rgb(30,30,30);
 }
-input {
-    font-family: "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-    font-size: 18px;
-    border:black solid 2px;
-    width: 183px;
-    height: 24px;
-}
-#button{
-    position:absolute;
-    top: 23px;
-    left: 205px;
-}
-#nflpercent, #nbapercent, #mlbpercent, #nhlpercent{
-    color: rgb(255,90,0);
-}
+
+#title {font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;font-size: 23px;}
+
+#nflsvg{top: 0px;left: 0px;}
+#nbasvg{top: 0px;left: 180px;}
+#mlbsvg{top: 180px;left: 0px;}
+#nhlsvg{top: 180px;left: 180px;}
+
+#nflsvg #title{fill: rgb(245,94,80);}
+#nbasvg #title{fill: rgb(82,167,220);}
+#mlbsvg #title{fill: rgb(96,185,101);}
+#nhlsvg #title{fill: rgb(178,123,179);}
+
+#nflpercent, #nbapercent, #mlbpercent, #nhlpercent{color: rgb(255,90,0);}
