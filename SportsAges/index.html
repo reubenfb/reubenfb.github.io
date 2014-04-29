@@ -13,7 +13,7 @@
 <div id="intro"><span id="introtext">Enter your birthday:</span></div>
 <div id="calculator">
     <form>
-        <input type="date" id="date" name="inputbox" value="1985-01-01">
+        <input type="date" name="inputbox" min="1900-01-01" max="2014-01-01" value="1985-01-01"             step="1">
         <button type="button" onClick="record(this.form)">Submit</button>
     </form>  
     <p>You are older than:</p>
