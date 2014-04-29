@@ -15,7 +15,7 @@ body{font-family: "ProximaNovaCondReg","Franklin Gothic", "ITC Franklin Gothic",
 
 text {font-size: 10px;fill: rgb(89,89,89);}
 rect:hover{fill: white;}
-svg{position: absolute;background: rgb(241,241,241);}
+svg{position: absolute;background: rgb(245,245,245);}
 li {margin: 0 0 2px 0;}
 
 #intro {
