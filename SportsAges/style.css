@@ -7,8 +7,8 @@ font-family: "ProximaNovaCondBold";
 src: url("chartfont/ProximaNovaCondBold.otf")
 }
 @font-face{
-font-family: "ProximaNovaCondBlack";
-src: url("chartfont/ProximaNovaCondBlack.otf")
+font-family: "ProximaNovaCondSBold";
+src: url("chartfont/ProximaNovaCondSbold.otf")
 }
 
 body{font-family: "ProximaNovaCondReg","Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;}
@@ -16,10 +16,11 @@ body{font-family: "ProximaNovaCondReg","Franklin Gothic", "ITC Franklin Gothic",
 text {font-size: 10px;fill: rgb(89,89,89);}
 rect:hover{fill: white;}
 svg{position: absolute;background: rgb(241,241,241);}
+li {margin: 0 0 2px 0;}
 
 #intro {
     position:absolute;
-    background-color: rgb(32,44,65);
+    background-color: rgb(54,72,106);
     left: 355px;
     top: 0px;
     height: 42px;
@@ -27,7 +28,7 @@ svg{position: absolute;background: rgb(241,241,241);}
 }
 
 #introtext {
-    font-family: "ProximaNovaCondBold","Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin       Gothic", Arial, sans-serif;
+    font-family: "ProximaNovaCondSbold","Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin       Gothic", Arial, sans-serif;
     position:relative;
     top: 5px;
     left: 4px;
