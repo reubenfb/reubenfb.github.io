@@ -10,18 +10,18 @@
 <body>
     
 <!--Div that holds input field, button, and text. All other elements generated in D3--> 
+<div id="intro"><span id="introtext">Enter your birthday:</span></div>
 <div id="calculator">
-    Enter your birthday:
     <form>
-        <input type="date" id="date" name="inputbox" value="1980-01-01">
+        <input type="date" id="date" name="inputbox" value="1985-01-01">
         <button type="button" onClick="record(this.form)">Submit</button>
     </form>  
     <p>You are older than:</p>
         <ul>
             <li><span id='nflpercent'>*</span> percent of NFL players</li>
             <li><span id='nbapercent'>*</span> percent of NBA players</li>
-            <li><span id='mlbpercent'>*</span> percent of MLB players</li>
             <li><span id='nhlpercent'>*</span> percent of NHL players</li>
+            <li><span id='mlbpercent'>*</span> percent of MLB players</li>
         </ul>     
 </div>
     
