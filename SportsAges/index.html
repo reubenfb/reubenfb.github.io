@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
     
-<body>
+<body>    
 <div id="calculator">
 <form name="ageform",action="",method="get">
 Enter your birthday:<br>
@@ -32,20 +32,8 @@ var nfl = [];
 var nba = [];
 var mlb = [];
 var nhl = [];
-d3.csv("nfl.csv", function(data) {
-    nfl = data;
-});
-d3.csv("nba.csv", function(data) {
-   nba = data;
-});
-d3.csv("mlb.csv", function(data) {
-   mlb = data;
-});
-d3.csv("nhl.csv", function(data) {
-   nhl = data;
-});
         
-    var nfldataset=      [{ age: 15, value: 0 },	
+var nfldataset=            [{ age: 15, value: 0 },	
 							{ age: 16, value: 0 },		
 							{ age: 17, value: 0 },
 							{ age: 18, value: 0 },
@@ -77,7 +65,7 @@ d3.csv("nhl.csv", function(data) {
                             { age: 44, value: 0 },
                             { age: 45, value: 0 }];
     
-    var nbadataset=      [{ age: 15, value: 0 },	
+var nbadataset=            [{ age: 15, value: 0 },	
 							{ age: 16, value: 0 },		
 							{ age: 17, value: 0 },
 							{ age: 18, value: 0 },
@@ -109,7 +97,7 @@ d3.csv("nhl.csv", function(data) {
                             { age: 44, value: 0 },
                             { age: 45, value: 0 }];
     
-        var mlbdataset=      [{ age: 15, value: 0 },	
+var mlbdataset=            [{ age: 15, value: 0 },	
 							{ age: 16, value: 0 },		
 							{ age: 17, value: 0 },
 							{ age: 18, value: 0 },
@@ -141,7 +129,7 @@ d3.csv("nhl.csv", function(data) {
                             { age: 44, value: 0 },
                             { age: 45, value: 0 }];
     
-      var nhldataset=      [{ age: 15, value: 0 },	
+var nhldataset=            [{ age: 15, value: 0 },	
 							{ age: 16, value: 0 },		
 							{ age: 17, value: 0 },
 							{ age: 18, value: 0.00210084 },
@@ -173,48 +161,63 @@ d3.csv("nhl.csv", function(data) {
                             { age: 44, value: 0 },
                             { age: 45, value: 0 }];
    
-    var w = 175;
-    var h = 175;
-    var padding = 7;
+var w = 175;
+var h = 175;
+var padding = 7;
         
-    var xScale = d3.scale.linear()
+var xScale = d3.scale.linear()
         .domain([15,45])
         .range([padding*1.2,w-padding*1.2]);
         
-    var yScale = d3.scale.linear()
+var yScale = d3.scale.linear()
         .domain([0, 0.185])
         .range([0, h-padding-22]);
     
-    var xAxis = d3.svg.axis()
+var xAxis = d3.svg.axis()
         .scale(xScale)
         .orient("bottom")
         .ticks(7)
         .tickSize(3);
         
-    var nflsvg = d3.select("body")
+var nflsvg = d3.select("body")
         .append("svg")
         .attr("width", w)
         .attr("height", h)
         .attr("id","nflsvg");
     
-    var nbasvg = d3.select("body")
+var nbasvg = d3.select("body")
         .append("svg")
         .attr("width", w)
         .attr("height", h)
         .attr("id","nbasvg");
     
-    var mlbsvg = d3.select("body")
+var mlbsvg = d3.select("body")
         .append("svg")
         .attr("width", w)
         .attr("height", h)
         .attr("id","mlbsvg");
     
-    var nhlsvg = d3.select("body")
+var nhlsvg = d3.select("body")
         .append("svg")
         .attr("width", w)
         .attr("height", h)
         .attr("id","nhlsvg");
+
+//import birthday data from csv files    
+d3.csv("nfl.csv", function(data) {
+    nfl = data;
+        });
+d3.csv("nba.csv", function(data) {
+   nba = data;
+        });
+d3.csv("mlb.csv", function(data) {
+   mlb = data;
+        });
+d3.csv("nhl.csv", function(data) {
+   nhl = data;
+        });
     
+//generate svgs, rects, axes, labels, and titles for NFL    
     nflsvg.selectAll("rect")
         .data(nfldataset)
         .enter()
@@ -247,6 +250,7 @@ d3.csv("nhl.csv", function(data) {
         .style("text-anchor", "left")
         .text("NFL");
     
+//generate svgs, rects, axes, labels, and titles for NBA   
     nbasvg.selectAll("rect")
         .data(nbadataset)
         .enter()
@@ -279,6 +283,7 @@ d3.csv("nhl.csv", function(data) {
         .style("text-anchor", "left")
         .text("NBA");
     
+//generate svgs, rects, axes, labels, and titles for MLB   
     mlbsvg.selectAll("rect")
         .data(mlbdataset)
         .enter()
@@ -294,7 +299,7 @@ d3.csv("nhl.csv", function(data) {
             return yScale(d.value);
         })
         .attr("fill","rgb(96,185,101)");
-    
+
     mlbsvg.append("g")
         .attr("class", "axis")
         .attr("transform", "translate(0," + (h-padding-22) + ")")
@@ -311,6 +316,7 @@ d3.csv("nhl.csv", function(data) {
         .style("text-anchor", "left")
         .text("MLB");
     
+//generate svgs, rects, axes, labels, and titles for NHL  
     nhlsvg.selectAll("rect")
         .data(nhldataset)
         .enter()
@@ -342,7 +348,8 @@ d3.csv("nhl.csv", function(data) {
         .attr("id","title")
         .style("text-anchor", "left")
         .text("NHL");
-    
+
+//percentage calculator which runs on form submission
 function record (form) {
     var nflpercent = 0;
     var nbapercent = 0;
@@ -350,7 +357,8 @@ function record (form) {
     var nhlpercent = 0;
     birthdate = new Date(form.inputbox.value);
     gap = (future - birthdate)/86400000;
-    
+
+//loops through birthday datasets, increments how many players are older than submitted birthdate
     for(var i = 0; i <nfl.length; i++){
     if(nfl[i].day<gap){
     nflpercent +=1;
@@ -378,18 +386,22 @@ function record (form) {
     };
     nhlprint = Math.round(((nhlpercent/nhl.length)*100)*10)/10;
     };
+
+//maps calculated percentages to HTML
 document.getElementById("nflpercent").innerHTML = "<strong>"+nflprint+"</strong>";
 document.getElementById("nbapercent").innerHTML = "<strong>"+nbaprint+"</strong>";
 document.getElementById("mlbpercent").innerHTML = "<strong>"+mlbprint+"</strong>";
 document.getElementById("nhlpercent").innerHTML = "<strong>"+nhlprint+"</strong>";
-    
+
+//converts submitted birthdate to age
 var today = new Date();
 var trueage = today.getFullYear() - birthdate.getFullYear();
 var m = today.getMonth() - birthdate.getMonth();
 if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
         trueage--;
     };
-    
+
+//greys out portions of four histrograms based on submitted age
 nflsvg.selectAll("rect")
         .transition()
         .duration(1000)

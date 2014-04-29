@@ -81,7 +81,7 @@ input {
 #button{
     position:absolute;
     top: 23px;
-    left: 196px;
+    left: 205px;
 }
 #nflpercent, #nbapercent, #mlbpercent, #nhlpercent{
     color: rgb(255,90,0);
