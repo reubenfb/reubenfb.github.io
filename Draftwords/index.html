@@ -17,7 +17,7 @@
 <div><span id="introtext">Enter your word:</span></div>
 <div id="calculator">
     <form>
-        <input type="text" name="inputbox" value="natural" >
+        <input type="text" name="inputbox" id="word input" value="natural" onClick="record(this.form)">
         <p id="buffer"></p>
         <button type="button" onClick="record(this.form)">Select</button>
     </form> 
@@ -32,8 +32,8 @@
 
 <script type="text/javascript">
     
-var w = 436;
-var h = 314;
+var w = 416;
+var h = 294;
 var padding=27;
 var word ="";
 var blackcount = 0;    
@@ -116,15 +116,15 @@ svg.append("g")
         .call(xAxis);
     
 svg.append("text")
-        .attr("x", 139.5)
-        .attr("y", 308)
+        .attr("x", 134.5)
+        .attr("y", 288)
         .attr("class","label")
         .style("text-anchor", "middle")
         .text("White Players");
     
 svg.append("text")
-        .attr("x", 319.5)
-        .attr("y", 308)
+        .attr("x", 303.5)
+        .attr("y", 288)
         .attr("class","label")
         .style("text-anchor", "middle")
         .text("Black Players");
@@ -132,7 +132,7 @@ svg.append("text")
 d3.csv("blackcount.csv", function(data) {black = data;});
 d3.csv("whitecount.csv", function(data) {white = data;})
 
-//percentage calculator which runs on form submission
+//function from form
 
     
 function record (form) {
