@@ -31,7 +31,7 @@
 </div>
 
 <script type="text/javascript">
-    
+
 var w = 416;
 var h = 294;
 var padding=27;
@@ -160,7 +160,7 @@ function record (form) {
     
     dataset=[whiterate,blackrate];
     
-    var newNumber=Math.random()/35-Math.random()/35
+    var newNumber=Math.random()/45-Math.random()/45
     yScale.domain([0, d3.max(dataset)*(1.2+newNumber)]);
     
 svg.selectAll("rect")    
@@ -174,7 +174,7 @@ svg.selectAll("text")
     .data(dataset)
     .transition()
     .duration(500)
-    .text(function(d) {return Math.round(d * 10) / 10;})
+    .text(function(d) {return Math.round(d * 100) / 100;})
     .attr("y", function(d) {return yScale(d)-7;});
     
 svg.select(".axis")
