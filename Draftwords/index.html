@@ -141,7 +141,7 @@ function record (form) {
      for(var i = 0; i < black.length; i++){
      if(black[i].word===word){
      blackcount=parseFloat(black[i].count);
-     blackrate=blackcount/145852*10000
+     blackrate=blackcount/223868*10000
      break;
         }
          else{blackcount=0; blackrate=0;};
@@ -150,7 +150,7 @@ function record (form) {
      for(var i = 0; i < white.length; i++){
      if(white[i].word===word){
      whitecount=parseFloat(white[i].count);
-     whiterate=whitecount/46964*10000
+     whiterate=whitecount/68465*10000
      break;
         }else{
      whitecount=0;
@@ -160,7 +160,7 @@ function record (form) {
     
     dataset=[whiterate,blackrate];
     
-    var newNumber=Math.random()/10-Math.random()/10
+    var newNumber=Math.random()/35-Math.random()/35
     yScale.domain([0, d3.max(dataset)*(1.2+newNumber)]);
     
 svg.selectAll("rect")    
