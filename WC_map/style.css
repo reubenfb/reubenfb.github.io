@@ -1,0 +1,43 @@
+.country {
+  fill: rgb(210,210,210);
+  stroke: rgb(255,255,255);
+  stroke-width: .7px;
+  stroke-linejoin: round;
+}
+    
+@font-face{
+font-family: "ProximaNovaCondReg";
+src: url("chartfont/ProximaNovaCondReg.otf")
+}
+@font-face{
+font-family: "ProximaNovaCondBold";
+src: url("chartfont/ProximaNovaCondBold.otf")
+}
+@font-face{
+font-family: "ProximaNovaCondBlack";
+src: url("chartfont/ProximaNovaCondBlack.otf")
+}
+
+div{
+width:622px;
+background-color: rgb(225,255,255);
+position: absolute;
+top: 280px;
+padding: 11px 9px 11px 9px;
+font-size: 15px;
+line-height: 16px;
+text-align: center;
+font-family: "ProximaNovaCondReg","Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+display: table;
+color: rgb(15,15,15);
+}
+    
+#highlighted{
+fill: rgb(190,30,10);
+}    
+
+#name{
+font-size: 15px;
+font-family: "ProximaNovaCondBlack","Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+
+}
