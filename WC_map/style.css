@@ -20,7 +20,7 @@ src: url("chartfont/ProximaNovaCondBlack.otf")
 
 div{
 width:607px;
-background-color: rgb(225,255,255);
+background-color: rgb(126,252,230);
 position: absolute;
 top: 277px;
 padding: 10px 9px 10px 9px;
@@ -29,15 +29,17 @@ line-height: 16px;
 text-align: center;
 font-family: "ProximaNovaCondReg","Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 display: table;
-color: rgb(15,15,15);
 }
     
 #highlighted{
 fill: rgb(190,30,10);
+}   
+
+#morehighlighted{
+fill: rgb(45,157,146);
 }    
 
 #name{
 font-size: 15px;
 font-family: "ProximaNovaCondBlack","Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
-
 }

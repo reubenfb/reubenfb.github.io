@@ -44,6 +44,12 @@ d3.json("topocountries2.json", function(error, world) {
       .attr("id",function(d){
       for(var i =0;i<reports.length;i++){if(d.properties.name===reports[i].name){return "highlighted";}}})
       .attr("d", path)
-      .on("mouseover",function(d){interactivity(d);});
-        });  
+      .on("mouseover",function(d){
+       for(var i=0;i<reports.length;i++){
+       if(d.properties.name===reports[i].name){
+       svg.selectAll(".country").attr("id",function(d){for(var i =0;i<reports.length;i++){if(d.properties.name===reports[i].name){return "highlighted";}}});
+       d3.select(this).attr("id","morehighlighted");
+       }};
+       interactivity(d);});
+       });  
 </script>
