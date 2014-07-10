@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Dynamic axes generated based on min/max values of randomized data</title>
+		<script type="text/javascript" src="../d3/d3.v3.js"></script>
+		<style type="text/css">
+			
+			.axis path,
+			.axis line {
+				fill: none;
+				stroke: black;
+				shape-rendering: crispEdges;
+			}
+
+			.axis text {
+				font-family: sans-serif;
+				font-size: 11px;
+			}
+
+		</style>
+	</head>
+	<body>
+	<div>Click the dots!</div>
+	<div>R-squared = <span id="r2">??</span>%</div>
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 500;
+			var h = 300;
+			var padding = 30;
+			
+			
+			//Static dataset
+
+			var dataset = [
+						{key: 1,x_value:5, y_value:20},
+						{key: 2,x_value:480, y_value:90},
+						{key: 3,x_value:250, y_value:50},
+						{key: 4,x_value:100, y_value:33},
+						{key: 5,x_value:330, y_value:95},
+						{key: 6,x_value:410, y_value:12},
+						{key: 7,x_value:475, y_value:44},
+						{key: 8,x_value:25, y_value:67},
+						{key: 9,x_value:85, y_value:21},
+						{key: 10,x_value:220, y_value:88},
+						{key: 11,x_value:267, y_value:150}
+							];
+					
+
+			//Create scale functions
+			var xScale = d3.scale.linear()
+								 .domain([0, d3.max(dataset, function(d) { return d.x_value; })])
+								 .range([padding, w - padding * 2]);
+
+			var yScale = d3.scale.linear()
+								 .domain([0, d3.max(dataset, function(d) { return d.y_value; })])
+								 .range([h - padding, padding]);
+
+
+			//Define X axis
+			var xAxis = d3.svg.axis()
+							  .scale(xScale)
+							  .orient("bottom")
+							  .ticks(5);
+
+			//Define Y axis
+			var yAxis = d3.svg.axis()
+							  .scale(yScale)
+							  .orient("left")
+							  .ticks(5);
+
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			//Create circles
+			svg.selectAll("circle")
+			   .data(dataset)
+			   .enter()
+			   .append("circle")
+			   .attr("cx", function(d) {
+			   		return xScale(d.x_value);
+			   })
+			   .attr("cy", function(d) {
+			   		return yScale(d.y_value);
+			   })
+			   .attr("r", 4)
+			   .attr("key",function(d){
+			   		return d.key;
+			   });
+
+			
+			//Create X axis
+			svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(0," + (h - padding) + ")")
+				.call(xAxis);
+			
+			//Create Y axis
+			svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(" + padding + ",0)")
+				.call(yAxis);
+
+			//create blank variables for trend line data
+
+			var x_values=[]
+			var y_values=[]
+			var lr = {};
+
+
+			//function to split dataset in "x"s and "y"s
+
+			function datasetsplit(dataset){
+				for(i=0;i<dataset.length;i++){
+					if(typeof(dataset[i].x_value)==="number"){
+						x_values.push(dataset[i].x_value);
+						y_values.push(dataset[i].y_value);
+					}
+					}
+					}
+
+			//function to run linear regression from "x"s and "y"s
+					
+			function linearRegression(y,x){
+				lr = {};
+				var n = y.length;
+				var sum_x = 0;
+				var sum_y = 0;
+				var sum_xy = 0;
+				var sum_xx = 0;
+				var sum_yy = 0;
+		
+				for (var i = 0; i < y.length; i++) {
+			
+					sum_x += x[i];
+					sum_y += y[i];
+					sum_xy += (x[i]*y[i]);
+					sum_xx += (x[i]*x[i]);
+					sum_yy += (y[i]*y[i]);
+					} 
+		
+					lr['slope'] = (n * sum_xy - sum_x * sum_y) / (n*sum_xx - sum_x * sum_x);
+					lr['intercept'] = (sum_y - lr.slope * sum_x)/n;
+					lr['r2'] = Math.pow((n*sum_xy - sum_x*sum_y)/Math.sqrt((n*sum_xx-sum_x*sum_x)*(n*sum_yy-sum_y*sum_y)),2);
+		
+				}
+			
+			//initial run of functions
+
+			datasetsplit(dataset);
+			linearRegression(y_values,x_values);
+
+			//draw trendline
+
+			svg.selectAll("trendline")
+				.data(dataset)
+				.enter()
+			    .append("line")
+			    .attr("class","trendline")
+			    .attr("x1", xScale(0))
+			    .attr("x2", xScale(480))
+			    .attr("y1", function(d) {return yScale(lr["intercept"])})
+			   .attr("y2", function(d) {return yScale((lr["slope"])*480+lr["intercept"])})
+			   .attr("stroke-width",.1)
+			   .attr("stroke","red");
+
+
+			//on circle click, dataset key set to "removed"
+
+			d3.selectAll("circle").on("click",function(){
+				
+				var dataremove = parseInt(d3.select(this).attr("key"));
+				for(i=0;i<dataset.length;i++){
+					if(dataset[i].key===dataremove){
+						dataset[i].x_value="removed";
+						dataset[i].y_value="removed";
+					}
+
+				}
+
+			//circle removed
+
+				d3.select(this).transition().duration(1000).style("opacity",0).remove();
+
+
+			//trend line variables reset
+				x_values=[]
+			    y_values=[]
+			    lr = {};
+
+			 //trend functions rerun
+
+				datasetsplit(dataset);
+			    linearRegression(y_values,x_values);
+
+			//transition trendline
+
+			svg.selectAll(".trendline")
+					   .data(dataset)
+					   .transition()
+					   .duration(1000)
+					   .attr("y1", function(d) {return yScale(lr["intercept"])})
+			           .attr("y2", function(d) {
+			   			return yScale(lr["slope"]*480+lr["intercept"])});
+
+			 //transition trendline
+
+			document.getElementById("r2").innerHTML = Math.round(lr["r2"]*10000)/100;
+
+			});
+
+			
+
+		</script>
+	</body>
+</html>
