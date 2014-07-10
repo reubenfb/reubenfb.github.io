@@ -164,9 +164,13 @@
 			    .attr("x1", xScale(0))
 			    .attr("x2", xScale(480))
 			    .attr("y1", function(d) {return yScale(lr["intercept"])})
-			   .attr("y2", function(d) {return yScale((lr["slope"])*480+lr["intercept"])})
-			   .attr("stroke-width",.1)
-			   .attr("stroke","red");
+			    .attr("y2", function(d) {return yScale((lr["slope"])*480+lr["intercept"])})
+			    .attr("stroke-width",.1)
+			    .attr("stroke","red");
+ 
+			//display r2
+			
+			 document.getElementById("r2").innerHTML = Math.round(lr["r2"]*10000)/100;
 
 
 			//on circle click, dataset key set to "removed"
@@ -207,7 +211,7 @@
 			           .attr("y2", function(d) {
 			   			return yScale(lr["slope"]*480+lr["intercept"])});
 
-			 //transition trendline
+			 //redisplay r2
 
 			document.getElementById("r2").innerHTML = Math.round(lr["r2"]*10000)/100;
 
