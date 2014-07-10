@@ -45,16 +45,19 @@
 						{key: 9,x_value:85, y_value:21},
 						{key: 10,x_value:220, y_value:88},
 						{key: 11,x_value:470, y_value:250}
+
 							];
-					
+			
+			var xmaximum = d3.max(dataset, function(d) { return d.x_value; });
+			var ymaximum = d3.max(dataset, function(d) { return d.y_value; })
 
 			//Create scale functions
 			var xScale = d3.scale.linear()
-								 .domain([0, d3.max(dataset, function(d) { return d.x_value; })])
+								 .domain([0, xmaximum])
 								 .range([padding, w - padding * 2]);
 
 			var yScale = d3.scale.linear()
-								 .domain([0, d3.max(dataset, function(d) { return d.y_value; })])
+								 .domain([0, ymaximum])
 								 .range([h - padding, padding]);
 
 
@@ -119,11 +122,11 @@
 					if(typeof(dataset[i].x_value)==="number"){
 						x_values.push(dataset[i].x_value);
 						y_values.push(dataset[i].y_value);
-					}
-					}
+							}
+						}
 					}
 
-			//function to run linear regression from "x"s and "y"s
+			//function to run linear regression from "x"s and "y"s, thanks Trent Richardson (not that one)
 					
 			function linearRegression(y,x){
 				lr = {};
@@ -162,15 +165,15 @@
 			    .append("line")
 			    .attr("class","trendline")
 			    .attr("x1", xScale(0))
-			    .attr("x2", xScale(480))
+			    .attr("x2", xScale(xmaximum))
 			    .attr("y1", function(d) {return yScale(lr["intercept"])})
-			    .attr("y2", function(d) {return yScale((lr["slope"])*480+lr["intercept"])})
+			    .attr("y2", function(d) {return yScale((lr["slope"])*xmaximum+lr["intercept"])})
 			    .attr("stroke-width",.1)
 			    .attr("stroke","red");
  
 			//display r2
 
-			 document.getElementById("r2").innerHTML = Math.round(lr["r2"]*10000)/100;
+			 document.getElementById("r2").innerHTML = Math.round(lr["r2"]*1000)/10;
 
 
 			//on circle click, dataset key set to "removed"
@@ -215,22 +218,15 @@
 
 			 //redisplay r2           
 
-			document.getElementById("r2").innerHTML = Math.round(lr["r2"]*10000)/100;
+			document.getElementById("r2").innerHTML = Math.round(lr["r2"]*1000)/10;
 			         
 			     }
 
 			else{
-
 			svg.selectAll(".trendline").transition().duration(1000).style("opacity",0);
 			document.getElementById("r2").innerHTML = "N/A";
-
-
-
 			 };
-
-			
-
-			
+	
 
 			});
 
