@@ -203,6 +203,8 @@
 
 			//transition trendline
 
+			if(y_values.length>1){
+
 			svg.selectAll(".trendline")
 					   .data(dataset)
 					   .transition()
@@ -211,9 +213,24 @@
 			           .attr("y2", function(d) {
 			   			return yScale(lr["slope"]*480+lr["intercept"])});
 
-			 //redisplay r2
+			 //redisplay r2           
 
 			document.getElementById("r2").innerHTML = Math.round(lr["r2"]*10000)/100;
+			         
+			     }
+
+			else{
+
+			svg.selectAll(".trendline").transition().duration(1000).style("opacity",0);
+			document.getElementById("r2").innerHTML = "N/A";
+
+
+
+			 };
+
+			
+
+			
 
 			});
 
