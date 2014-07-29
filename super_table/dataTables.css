@@ -20,6 +20,7 @@
          url('AtlasGrotesk-Regular.ttf') format('truetype'),
          url('AtlasGrotesk-Regular.svg#decima_mono_proregular') format('svg');
     font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
@@ -30,6 +31,7 @@
          url('AtlasGrotesk-Bold.ttf') format('truetype'),
          url('AtlasGrotesk-Bold.svg#decima_mono_proregular') format('svg');
     font-weight: bold;
+    font-style: normal;
 }
 
 html, body {
