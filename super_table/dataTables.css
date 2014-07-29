@@ -6,21 +6,21 @@
  @font-face{
 font-family: "DecimaMonoPro";
 src: url("fonts/DecimaMonoPro.otf");
-src: url("fonts/DecimaMonoPro.eot");
+src: url("fonts/DecimaMonoPro.eot") format("embedded-opentype");
 }
 
 @font-face{
 font-family: "AtlasGrotesk";
 src: url("fonts/AtlasGrotesk-Regular.otf");
-src: url("fonts/AtlasGrotesk-Regular.eot");
-font-weight: normal;
+src: url("fonts/AtlasGrotesk-Regular.eot") format("embedded-opentype");
+font-weight: 400;
 }
 
 @font-face{
 font-family: "AtlasGrotesk";
-src: url("fonts/AtlasGrotesk-Bold.otf");
-src: url("fonts/AtlasGrotesk-Bold.eot");
-font-weight: bold;
+src: url("fonts/AtlasGrotesk-Regular.otf");
+src: url("fonts/AtlasGrotesk-Regular.eot") format("embedded-opentype");
+font-weight: normal;
 }
 
 html, body {
