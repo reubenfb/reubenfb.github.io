@@ -20,6 +20,11 @@ src: url("fonts/AtlasGrotesk-Bold.otf");
 font-weight: bold;
 }
 
+html, body {
+  height: 100%;
+  margin: 0;
+  }
+
 table.dataTable {
   width: 100%;
   margin: 0 auto;
