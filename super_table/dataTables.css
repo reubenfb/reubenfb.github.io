@@ -264,6 +264,7 @@ table.dataTable.order-column.hover tbody tr.even:hover.selected > .sorting_3 {
 table.dataTable.no-footer {
   border-bottom: 1px transparent #111111;
 }
+*/
 
 table.dataTable.nowrap th, table.dataTable.nowrap td {
   white-space: nowrap;
@@ -285,7 +286,7 @@ table.dataTable th.dt-left,
 table.dataTable td.dt-left {
   text-align: left;
 }
-*/
+
 table.dataTable th.dt-center,
 table.dataTable td.dt-center,
 table.dataTable td.dataTables_empty {
@@ -293,7 +294,7 @@ table.dataTable td.dataTables_empty {
   font-family: AtlasGrotesk;
   font-size: .875em;
 }
-/*
+
 table.dataTable th.dt-right,
 table.dataTable td.dt-right {
   text-align: right;
@@ -367,12 +368,7 @@ table.dataTable td {
   -moz-box-sizing: content-box;
   box-sizing: content-box;
 }
-*/
 
-/*
- * Control feature layout
- */
- /*
 .dataTables_wrapper {
   position: relative;
   clear: both;
@@ -382,7 +378,7 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_length {
   float: left;
 }
-*/
+
 .dataTables_wrapper .dataTables_filter {
   text-align: right;
   height: 43px;
