@@ -372,6 +372,8 @@ table.dataTable td {
   float: right;
   text-align: right;
   height: 43px;
+  top: 0px;
+  display: inline-block;
 }
 .dataTables_wrapper .dataTables_filter input {
   margin-left: 0.4em;
@@ -379,7 +381,7 @@ table.dataTable td {
   font-size: 1.2em;
 }
 
-label{
+.dataTables_wrapper .dataTables_filter label{
 font-family: AtlasGrotesk;
 font-size: .875em;
 }
