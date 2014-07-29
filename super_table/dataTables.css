@@ -12,18 +12,24 @@
          url('DecimaMonoPro.svg#decima_mono_proregular') format('svg');
 }
 
-@font-face{
-font-family: "AtlasGrotesk";
-src: url("fonts/AtlasGrotesk-Regular.otf");
-src: url("fonts/AtlasGrotesk-Regular.eot") format("embedded-opentype");
-font-weight: 400;
+@font-face {
+    font-family: 'AtlasGrotesk';
+    src: url('AtlasGrotesk-Regular.eot');
+    src: url('AtlasGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+         url('AtlasGrotesk-Regular.woff') format('woff'),
+         url('AtlasGrotesk-Regular.ttf') format('truetype'),
+         url('AtlasGrotesk-Regular.svg#decima_mono_proregular') format('svg');
+    font-weight: normal;
 }
 
-@font-face{
-font-family: "AtlasGrotesk";
-src: url("fonts/AtlasGrotesk-Regular.otf");
-src: url("fonts/AtlasGrotesk-Regular.eot") format("embedded-opentype");
-font-weight: normal;
+@font-face {
+    font-family: 'AtlasGrotesk';
+    src: url('AtlasGrotesk-Bold.eot');
+    src: url('AtlasGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
+         url('AtlasGrotesk-Bold.woff') format('woff'),
+         url('AtlasGrotesk-Bold.ttf') format('truetype'),
+         url('AtlasGrotesk-Bold.svg#decima_mono_proregular') format('svg');
+    font-weight: bold;
 }
 
 html, body {
