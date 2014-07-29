@@ -3,8 +3,22 @@
  */
 
 
- @font-face{font-family:DecimaMonoPro;src:url('../fonts/DecimaMonoPro-Bold.eot');src:url('../fonts/DecimaMonoPro-Bold.eot?#iefix') format('embedded-opentype'),url('../fonts/DecimaMonoPro-Bold.woff') format('woff'),url('../fonts/DecimaMonoPro-Bold.ttf') format('truetype'),url('../fonts/DecimaMonoPro-Bold.svg#892f3d29c57543b364381db14cc3d2b6') format('svg');font-style:normal;font-weight:700}@font-face{font-family:DecimaMonoPro;src:url('../fonts/DecimaMonoPro.eot');src:url('../fonts/DecimaMonoPro.eot?#iefix') format('embedded-opentype'),url('../fonts/DecimaMonoPro.woff') format('woff'),url('../fonts/DecimaMonoPro.ttf') format('truetype'),url('../fonts/DecimaMonoPro.svg#05b38ec6b99e47514c4477b29763ce0a') format('svg');font-style:normal;font-weight:400}@font-face{font-family:AtlasGrotesk;src:url('../fonts/AtlasGrotesk-Bold.eot');src:url('../fonts/AtlasGrotesk-Bold.eot?#iefix') format('embedded-opentype'),url('../fonts/AtlasGrotesk-Bold.woff') format('woff'),url('../fonts/AtlasGrotesk-Bold.ttf') format('truetype'),url('../fonts/AtlasGrotesk-Bold.svg#e865ba5279b8b4f4d93cf0b04320407c') format('svg');font-style:normal;font-weight:700}@font-face{font-family:AtlasGrotesk;src:url('../fonts/AtlasGrotesk-Regular.eot');src:url('../fonts/AtlasGrotesk-Regular.eot?#iefix') format('embedded-opentype'),url('../fonts/AtlasGrotesk-Regular.woff') format('woff'),url('../fonts/AtlasGrotesk-Regular.ttf') format('truetype'),url('../fonts/AtlasGrotesk-Regular.svg#4c452fbe91af52f13ffe1a98c5a30926') format('svg');font-style:normal;font-weight:400}
+ @font-face{
+font-family: "DecimaMonoPro";
+src: url("fonts/DecimaMonoPro.otf")
+}
 
+@font-face{
+font-family: "AtlasGrotesk";
+src: url("fonts/AtlasGrotesk-Regular.otf");
+font-weight: normal;
+}
+
+@font-face{
+font-family: "AtlasGrotesk";
+src: url("fonts/AtlasGrotesk-Bold.otf");
+font-weight: bold;
+}
 
 html, body {
   -webkit-text-size-adjust:100%;
@@ -31,14 +45,14 @@ text-align: left;
 }
 .rank{
 font-size: 0.8571em;
-font-weight: 700;
+font-weight: bold;
 
 }
 
 table.dataTable thead th,
 table.dataTable tfoot th {
   font-size: .8em;
-  font-weight: 700;
+  font-weight: bold;
   font-family: AtlasGrotesk;
 }
 table.dataTable thead th,
