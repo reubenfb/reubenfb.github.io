@@ -21,6 +21,7 @@ font-weight: bold;
 }
 
 html, body {
+  -webkit-text-size-adjust:100%;
   height: 100%;
   margin: 0;
   }
