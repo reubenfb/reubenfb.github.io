@@ -13,9 +13,17 @@ $(document).ready(function() {
 		"bInfo":          false,
 		"aoColumnDefs": [
         { "sClass": "numbers", "aTargets": [ 2 ,3] },
-        { "sClass": "text", "aTargets": [ 0 ,1] }
-    ]
+        { "sClass": "text", "aTargets": [1] },
+        { "sClass": "rank", "aTargets": [0] }
+    ],
+    	"oLanguage": {
+         "sSearch": "",
+
+       }
+
 	} );
+	$('.dataTables_filter input').attr("placeholder", "Search");
+
 } );
 </script>
 
