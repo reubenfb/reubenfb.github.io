@@ -5,18 +5,21 @@
 
  @font-face{
 font-family: "DecimaMonoPro";
-src: url("fonts/DecimaMonoPro.otf")
+src: url("fonts/DecimaMonoPro.otf");
+src: url("fonts/DecimaMonoPro.eot");
 }
 
 @font-face{
 font-family: "AtlasGrotesk";
 src: url("fonts/AtlasGrotesk-Regular.otf");
+src: url("fonts/AtlasGrotesk-Regular.eot");
 font-weight: normal;
 }
 
 @font-face{
 font-family: "AtlasGrotesk";
 src: url("fonts/AtlasGrotesk-Bold.otf");
+src: url("fonts/AtlasGrotesk-Bold.eot");
 font-weight: bold;
 }
 
