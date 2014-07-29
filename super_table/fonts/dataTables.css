@@ -5,31 +5,31 @@
 
 @font-face {
     font-family: 'DecimaMonoPro';
-    src: url('fonts/DecimaMonoPro.eot');
-    src: url('fonts/DecimaMonoPro.eot?#iefix') format('embedded-opentype'),
-         url('fonts/DecimaMonoPro.woff') format('woff'),
-         url('fonts/DecimaMonoPro.ttf') format('truetype'),
-         url('fonts/DecimaMonoPro.svg#decima_mono_proregular') format('svg');
+    src: url('DecimaMonoPro.eot');
+    src: url('DecimaMonoPro.eot?#iefix') format('embedded-opentype'),
+         url('DecimaMonoPro.woff') format('woff'),
+         url('DecimaMonoPro.ttf') format('truetype'),
+         url('DecimaMonoPro.svg#decima_mono_proregular') format('svg');
 }
 
 @font-face {
     font-family: 'AtlasGrotesk';
-    src: url('fonts/AtlasGrotesk-Regular.eot');
-    src: url('fonts/AtlasGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
-         url('fonts/AtlasGrotesk-Regular.woff') format('woff'),
-         url('fonts/AtlasGrotesk-Regular.ttf') format('truetype'),
-         url('fonts/AtlasGrotesk-Regular.svg#decima_mono_proregular') format('svg');
+    src: url('AtlasGrotesk-Regular.eot');
+    src: url('AtlasGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+         url('AtlasGrotesk-Regular.woff') format('woff'),
+         url('AtlasGrotesk-Regular.ttf') format('truetype'),
+         url('AtlasGrotesk-Regular.svg#decima_mono_proregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'AtlasGrotesk';
-    src: url('fonts/AtlasGrotesk-Bold.eot');
-    src: url('fonts/AtlasGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
-         url('fonts/AtlasGrotesk-Bold.woff') format('woff'),
-         url('fonts/AtlasGrotesk-Bold.ttf') format('truetype'),
-         url('fonts/AtlasGrotesk-Bold.svg#decima_mono_proregular') format('svg');
+    src: url('AtlasGrotesk-Bold.eot');
+    src: url('AtlasGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
+         url('AtlasGrotesk-Bold.woff') format('woff'),
+         url('AtlasGrotesk-Bold.ttf') format('truetype'),
+         url('AtlasGrotesk-Bold.svg#decima_mono_proregular') format('svg');
     font-weight: bold;
     font-style: normal;
 }
