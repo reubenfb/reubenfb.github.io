@@ -3,10 +3,13 @@
  */
 
 
- @font-face{
-font-family: "DecimaMonoPro";
-src: url("fonts/DecimaMonoPro.otf");
-src: url("fonts/DecimaMonoPro.eot") format("embedded-opentype");
+@font-face {
+    font-family: 'DecimaMonoPro';
+    src: url('DecimaMonoPro.eot');
+    src: url('DecimaMonoPro.eot?#iefix') format('embedded-opentype'),
+         url('DecimaMonoPro.woff') format('woff'),
+         url('DecimaMonoPro.ttf') format('truetype'),
+         url('DecimaMonoPro.svg#decima_mono_proregular') format('svg');
 }
 
 @font-face{
