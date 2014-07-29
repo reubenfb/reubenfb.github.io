@@ -270,6 +270,8 @@ table.dataTable th.dt-center,
 table.dataTable td.dt-center,
 table.dataTable td.dataTables_empty {
   text-align: center;
+  font-family: AtlasGrotesk;
+  font-size: .875em;
 }
 /*
 table.dataTable th.dt-right,
