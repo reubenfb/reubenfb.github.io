@@ -531,7 +531,7 @@ table.dataTable td {
   }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 605px) {
   .dataTables_wrapper .dataTables_length,
   .dataTables_wrapper .dataTables_filter {
     float: none;
