@@ -591,3 +591,19 @@ display:none;
 display:none;
   }
 }
+
+@media screen and (device-width: 320px) and (orientation:landscape){
+  td:nth-child(3),th:nth-child(3){
+display:none;
+  }
+}
+
+@media screen and (device-width: 320px) and (orientation:portrait){
+  td:nth-child(3),th:nth-child(3){
+display:none;
+  }
+  td:nth-child(1),th:nth-child(1){
+display:none;
+  }
+}
+
