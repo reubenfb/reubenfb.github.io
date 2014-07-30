@@ -39,14 +39,6 @@ html, body {
   margin: 0;
   }
 
-body{
-  height:307%;
-  }
-html{
-  height:100%;
-  }
-
-
 table.dataTable {
   width: 100%;
   margin: 0 auto;
