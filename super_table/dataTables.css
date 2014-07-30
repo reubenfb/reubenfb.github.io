@@ -567,6 +567,7 @@ font-size: .875em;
   }
 }
 
+*/
 @media screen and (max-width: 605px) {
   .dataTables_wrapper .dataTables_length,
   .dataTables_wrapper .dataTables_filter {
@@ -578,3 +579,15 @@ font-size: .875em;
   }
 }
 
+
+@media screen and (max-width: 510px) {
+  td:nth-child(3),th:nth-child(3){
+display:none;
+  }
+}
+
+@media screen and (max-width: 345px) {
+  td:nth-child(1),th:nth-child(1){
+display:none;
+  }
+}
