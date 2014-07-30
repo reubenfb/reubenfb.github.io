@@ -37,8 +37,11 @@
 html, body {
   -webkit-text-size-adjust:100%;
   margin: 0;
-  height: 7.9%;
   }
+
+body{
+height:8%;
+}
 
 
 table.dataTable {
