@@ -60,6 +60,7 @@ text-align: left;
 .rank{
 font-size: 0.8571em;
 font-weight: bold;
+text-align: center;
 
 }
 
@@ -68,6 +69,7 @@ table.dataTable tfoot th {
   font-size: .8em;
   font-weight: bold;
   font-family: AtlasGrotesk;
+  vertical-align: bottom;
 }
 table.dataTable thead th,
 table.dataTable thead td {
@@ -384,13 +386,15 @@ table.dataTable td {
 }
 */
 .dataTables_wrapper .dataTables_filter {
-  text-align: right;
+  /*text-align: right;*/
   height: 43px;
   top: 0px;
   display: block;
 }
 .dataTables_wrapper .dataTables_filter input {
   margin-left: 0.4em;
+  border: 1px solid #a6a6a6;
+  background-color: #f9f9f9;
   font-family: AtlasGrotesk;
   font-size: 1.2em;
 }
