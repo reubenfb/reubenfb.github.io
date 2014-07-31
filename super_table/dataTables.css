@@ -50,18 +50,20 @@ table.dataTable {
 }
 
 .numbers{
-font-family: DecimaMonoPro;
-text-align: right;
+  font-family: DecimaMonoPro;
+  text-align: right;
 }
 .rank, .text{
-font-family: AtlasGrotesk;
-text-align: left;
+  font-family: AtlasGrotesk;
+  text-align: left;
+}
+table.dataTable tbody th, table.dataTable tbody td.text {
+  padding-bottom: 2px;
 }
 .rank{
-font-size: 0.8571em;
-font-weight: bold;
-text-align: center;
-
+  font-size: 0.8571em;
+  font-weight: bold;
+  text-align: center;
 }
 
 table.dataTable thead th,
