@@ -386,7 +386,8 @@ table.dataTable td {
 }
 */
 .dataTables_wrapper .dataTables_filter {
-  /*text-align: right;*/
+  text-align: right;
+  padding: 0 8px 0 0 ;
   height: 43px;
   top: 0px;
   display: block;
@@ -402,6 +403,7 @@ table.dataTable td {
 .dataTables_wrapper .dataTables_filter label{
 font-family: AtlasGrotesk;
 font-size: .875em;
+color: transparent;
 }
 
 
