@@ -588,7 +588,7 @@ color: transparent;
 }
 
 
-@media screen and (max-width: 510px) {
+@media screen and (max-width: 480px) {
   td:nth-child(3),th:nth-child(3){
 display:none;
   }

@@ -247,4 +247,3 @@ var pym = (function() {
 
     return lib;
 }());
-module.exports = pym;
