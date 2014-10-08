@@ -1,0 +1,244 @@
+<meta charset="utf-8">
+     <style>
+
+     div#explanation{
+      position: absolute;
+      top: 615px;
+      left: 157px;
+      width: 480px;
+      font-family: Arial;
+      color: #787878;
+      font-size: 18px;
+      text-align: center;
+      visibility: hidden;
+
+     }
+
+     span{
+      font-weight: bold;
+
+     }
+
+      rect.cell-border {
+        stroke: #fff;
+        stroke-width:0.5px;   
+      }
+
+      rect.cell-hover {
+     }
+
+      text.mono {
+        font-size: 10pt;
+        font-family: Arial;
+        fill: #aaa;
+      }
+
+      text.celllabel {
+        font-size: 9pt;
+        font-family: Arial;
+        fill: #737373;
+        pointer-events: none;
+      }
+
+      text.text-selected {
+        fill: #000;
+      }
+
+      text.text-highlight {
+        fill: #ff2700;
+        font-weight: bold;
+      }
+      text.text-hover {
+        fill: #008fd5;
+        font-weight: bold;
+      }
+
+    </style>
+
+</head>
+
+<script src="http://d3js.org/d3.v3.min.js"></script>
+
+<div id="chart" style='width:960px; height:960px;'></div>
+
+<script type="text/javascript">
+var margin = { top: 150, right: 2, bottom: 2, left: 150 },
+  cellSize=30;
+  col_number=16;
+  row_number=15;
+  width = cellSize*col_number, 
+  height = cellSize*row_number,
+  colors = ['#f0f0f0','#ff2700'];
+  hcrow = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
+  hccol = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] 
+
+  rowLabel = ['CHI @ CAR','HOU @ DAL','ARZ @ DEN','BUF @ DET','MIN @ GB','BAL @ IND','PIT @ JAC','CIN @ NE','TB @ NO','ATL @ NYG','STL @ PHI','NYJ @ SD','KC @ SF','CLE @ TEN','SEA @ WAS'], 
+  colLabel = ['BUF','NE','MIA','NYJ','CIN','BAL','PIT','CLE','SD','DEN','KC','OAK','IND','HOU','TEN','JAC'];
+
+d3.tsv("data_heatmap.tsv",
+function(d) {
+  return {
+    row:   +d.row_idx,
+    col:   +d.col_idx,
+    col_name: d.col_name,
+    value: +d.diff,
+    home: d.home,
+    away: d.away,
+    initial_chances: +d.initial_chances,
+    if_home: +d.if_home,
+    if_away: +d.if_away
+  };
+},
+
+function(error, data) {
+  var colorScale = d3.scale.linear()
+      .domain([0,.2])
+      .range(colors);
+  
+  var svg = d3.select("#chart").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      ;
+
+  var rowSortOrder = true;
+  var colSortOrder = true;
+
+  var rowLabels = svg.append("g")
+      .selectAll(".rowLabelg")
+      .data(rowLabel)
+      .enter()
+      .append("text")
+      .text(function (d) { return d; })
+      .attr("x", 0)
+      .attr("y", function (d, i) { return (hcrow.indexOf(i+1)) * cellSize; })
+      .style("text-anchor", "end")
+      .attr("transform", "translate(-15," + cellSize / 1.5 + ")")
+      .attr("class", function (d,i) { return "rowLabel mono r"+i;} ) 
+      .on("mouseover", function(d) {d3.select(this).classed("text-hover",true);})
+      .on("mouseout" , function(d) {d3.select(this).classed("text-hover",false);})
+      .on("click", function(d,i) {sortbylabel("r",i)});
+
+  var colLabels = svg.append("g")
+      .selectAll(".colLabelg")
+      .data(colLabel)
+      .enter()
+      .append("text")
+      .text(function (d) { return d; })
+      .attr("y", 0)
+      .attr("x", function (d, i) { return hccol.indexOf(i+1) * cellSize; })
+      .style("text-anchor", "middle")
+      .attr("transform", "translate("+cellSize/2 + ",-15)")
+      .attr("class",  function (d,i) { return "colLabel mono c"+i;} )
+      .on("mouseover", function(d) {d3.select(this).classed("text-hover",true);})
+      .on("mouseout" , function(d) {d3.select(this).classed("text-hover",false);})
+      .on("click", function(d,i) {sortbylabel("c",i)});
+
+  var heatMap = svg.append("g").attr("class","g3")
+        .selectAll(".cellg")
+        .data(data,function(d){return d.row+":"+d.col;})
+        .enter()
+        .append("rect")
+        .attr("x", function(d) { return hccol.indexOf(d.col) * cellSize; })
+        .attr("y", function(d) { return hcrow.indexOf(d.row) * cellSize; })
+        .attr("class", function(d){return "cell cell-border cr"+(d.row-1)+" cc"+(d.col-1);})
+        .attr("width", cellSize)
+        .attr("height", cellSize)
+        .style("fill", function(d) { return colorScale(d.value); })
+        .on("mouseover", function(d){
+               d3.select(this)
+                .classed("cell-hover",true)
+                .style("fill","#6bb2d5")
+               d3.selectAll(".rowLabel").classed("text-highlight",function(r,ri){ return ri==(d.row-1);});
+               d3.selectAll(".colLabel").classed("text-highlight",function(c,ci){ return ci==(d.col-1);});
+
+              
+              document.getElementById('selectedteam').innerHTML = d.col_name;
+              document.getElementById('initial_chances').innerHTML = Math.round(d.initial_chances*1000)/10+"%";
+              document.getElementById('homechances').innerHTML = Math.round(d.if_home*1000)/10+"%";
+              document.getElementById('hometeam').innerHTML = d.home;
+              //document.getElementById('homeimprov').innerHTML = Math.round((d.if_home-d.initial_chances)*1000)/10+"%";
+              document.getElementById('awaychances').innerHTML = Math.round(d.if_away*1000)/10+"%";
+              document.getElementById('awayteam').innerHTML = d.away;
+              //document.getElementById('awayimprov').innerHTML = Math.round((d.if_away-d.initial_chances)*1000)/10+"%";
+              document.getElementById('gap').innerHTML = Math.round(Math.abs(d.value)*1000)/10+"%";
+              document.getElementById('explanation').setAttribute('style','visibility: visible')
+
+        })
+        .on("mouseout", function(){
+               d3.select(this)
+                .classed("cell-hover",false)
+                .style("fill", function(d) { return colorScale(d.value); });
+               d3.selectAll(".rowLabel").classed("text-highlight",false);
+               d3.selectAll(".colLabel").classed("text-highlight",false);
+        });
+
+
+    var heatlabels = svg.append("g").attr("class","g3")
+        .selectAll(".textg")
+        .data(data,function(d){return d.row+":"+d.col;})
+        .enter()
+        .append("text")
+        .text(function(d){return Math.round(d.value*100)+"%"})
+        .style("text-anchor","middle")
+        .attr("x", function(d) { return hccol.indexOf(d.col) * cellSize + cellSize/2;})
+        .attr("y", function(d) { return hcrow.indexOf(d.row) * cellSize + cellSize/1.6; })
+        .attr("class", "celllabel");
+
+
+
+// Change ordering of cells
+
+  function sortbylabel(rORc,i){
+       var t = svg.transition().duration(300);
+       var diffs=[];
+       var sorted; // sorted is zero-based index
+       d3.selectAll(".c"+rORc+i) 
+         .filter(function(ce){
+            diffs.push(ce.value);
+          })
+       ;
+       if(rORc=="r"){ // sort row
+         sorted=d3.range(col_number).sort(function(a,b){return diffs[b]-diffs[a];});
+         t.selectAll(".cell")
+           .attr("x", function(d) {;
+            return sorted.indexOf(d.col-1) * cellSize; })
+           ;
+         t.selectAll(".celllabel")
+           .attr("x", function(d) { return sorted.indexOf(d.col-1) * cellSize + cellSize/2; })
+           ;
+         t.selectAll(".colLabel")
+          .attr("x", function (d, i) { return sorted.indexOf(i) * cellSize; })
+         ;
+       }else{ // sort column
+         sorted=d3.range(row_number).sort(function(a,b){return diffs[b]-diffs[a];});
+         t.selectAll(".cell")
+           .attr("y", function(d) {return sorted.indexOf(d.row-1) * cellSize; })
+           ;
+        t.selectAll(".celllabel")
+           .attr("y", function(d) {return sorted.indexOf(d.row-1) * cellSize + cellSize/1.6; })
+           ;
+         t.selectAll(".rowLabel")
+          .attr("y", function (d, i) {return sorted.indexOf(i) * cellSize; })
+         ;
+       }
+  }
+  
+  
+  // 
+  
+});
+</script>
+
+<div id="explanation">
+<p><span id="selectedteam">HOU</span> has a <span id="initial_chances">15.1%</span> chance of making the playoffs. Their updated chances are <span id="homechances">14.5%</span> if <span id="hometeam">CAR</span> wins at home or <span id="awaychances">45.5%</span> if <span id="awayteam">DEN</span> wins, a <span id="gap">45.1%</span> swing.</p>
+</div>
+
+
+
+
+
+
+
+
