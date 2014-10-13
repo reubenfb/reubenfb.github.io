@@ -170,7 +170,7 @@ a {
 }
 
 
-@media (max-width: 610px) {
+@media (max-width: 630px) {
   .container {
     visibility: hidden;
   }
