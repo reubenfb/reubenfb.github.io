@@ -1,0 +1,169 @@
+/* BODY AND TITLE FORMATTING */
+
+.container {
+  width: 610px;
+  height: 585px;
+  background-color: #f0f0f0;
+  color: #3c3c3c;
+  font-family: AtlasGrotesk;
+}
+
+.title {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+
+.title h1 {
+  font-size: 23px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.title h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 0px;
+}
+
+
+/* DIVISION HEADERS FORMATTING */
+
+#divisionnames {
+  font-weight: 700;
+  width: 496px;
+  position: relative;
+  left: 100px;
+  top: 87px;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5;
+  transition: opacity 0.5s;
+}
+
+#divisionnames div {
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+}
+
+#divisionnames hr {
+  background-color: #999999;
+  height: 1px;
+  margin: 5px;
+  border: none;
+}
+
+
+/* TABLE FORMATTING - LARGELY HAPPENS IN D3 */
+
+rect.cell-border {
+  stroke: #fff;
+  stroke-width:0.4px;   
+}
+
+text.mono {
+  cursor: crosshair;
+  font-size: 9.9pt;
+}
+
+text.celllabel {
+  font-size: 11pt;
+  font-family: DecimaMonoPro;
+  pointer-events: none;
+}
+
+text.text-highlight {
+  fill: #008fd5;
+  font-weight: 700;
+}
+text.text-hover {
+  fill: #ff2700;
+  font-weight: 700;
+}
+
+
+/* BOTTOM MATH FORMATTING */
+
+#explanation {
+  position: absolute;
+  top: 455px;
+  left: 115px;
+  width: 496px;
+  font-size: 18px;
+  visibility: hidden;
+}
+
+.playoffheader {
+  margin-top: 17px;
+  font-size: 13px;
+  text-align: center;
+}
+
+.numberrows {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.numbersrow div {
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+  font-family: DecimaMonoPro;
+  margin-bottom: 0px;
+}
+
+.labelsrow div{ 
+  width: 25%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+span {
+  font-weight: 700;
+}
+
+
+/* FONTS */
+
+@font-face {
+  font-family: DecimaMonoPro;
+  src: url('../fonts/DecimaMonoPro-Bold.eot');
+  /* IE9 Compat Modes */
+  src: url('../fonts/DecimaMonoPro-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/DecimaMonoPro-Bold.woff') format('woff'), url('../fonts/DecimaMonoPro-Bold.ttf') format('truetype'), url('../fonts/DecimaMonoPro-Bold.svg#892f3d29c57543b364381db14cc3d2b6') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 700; 
+}
+
+@font-face {
+  font-family: DecimaMonoPro;
+  src: url('../fonts/DecimaMonoPro.eot');
+  /* IE9 Compat Modes */
+  src: url('../fonts/DecimaMonoPro.eot?#iefix') format('embedded-opentype'), url('../fonts/DecimaMonoPro.woff') format('woff'), url('../fonts/DecimaMonoPro.ttf') format('truetype'), url('../fonts/DecimaMonoPro.svg#05b38ec6b99e47514c4477b29763ce0a') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400; 
+}
+
+@font-face {
+  font-family: AtlasGrotesk;
+  src: url('../fonts/AtlasGrotesk-Bold.eot');
+  /* IE9 Compat Modes */
+  src: url('../fonts/AtlasGrotesk-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/AtlasGrotesk-Bold.woff') format('woff'), url('../fonts/AtlasGrotesk-Bold.ttf') format('truetype'), url('../fonts/AtlasGrotesk-Bold.svg#e865ba5279b8b4f4d93cf0b04320407c') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 700; 
+}
+
+@font-face {
+  font-family: AtlasGrotesk;
+  src: url('../fonts/AtlasGrotesk-Regular.eot');
+  /* IE9 Compat Modes */
+  src: url('../fonts/AtlasGrotesk-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/AtlasGrotesk-Regular.woff') format('woff'), url('../fonts/AtlasGrotesk-Regular.ttf') format('truetype'), url('../fonts/AtlasGrotesk-Regular.svg#4c452fbe91af52f13ffe1a98c5a30926') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400; 
+}

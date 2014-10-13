@@ -1,76 +1,32 @@
 <meta charset="utf-8">
-     <style>
-
-     div#explanation{
-      position: absolute;
-      top: 615px;
-      left: 157px;
-      width: 480px;
-      font-family: Arial;
-      color: #787878;
-      font-size: 18px;
-      text-align: center;
-      visibility: hidden;
-
-     }
-
-     span{
-      font-weight: bold;
-
-     }
-
-      rect.cell-border {
-        stroke: #fff;
-        stroke-width:0.5px;   
-      }
-
-      rect.cell-hover {
-     }
-
-      text.mono {
-        font-size: 10pt;
-        font-family: Arial;
-        fill: #aaa;
-      }
-
-      text.celllabel {
-        font-size: 9pt;
-        font-family: Arial;
-        fill: #737373;
-        pointer-events: none;
-      }
-
-      text.text-selected {
-        fill: #000;
-      }
-
-      text.text-highlight {
-        fill: #ff2700;
-        font-weight: bold;
-      }
-      text.text-hover {
-        fill: #008fd5;
-        font-weight: bold;
-      }
-
-    </style>
-
+<head>
+<link rel="stylesheet" type="text/css" href="football.css">
 </head>
 
-<script src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="d3.js"></script>
 
-<div id="chart" style='width:960px; height:960px;'></div>
+<div class="container">
+
+<div class='title'>
+<h1>How Do This Week's Games Affect Playoff Odds?</h1>
+<h2>NFL Week 5, AFC teams</h2>
+</div>
+
+<div id="divisionnames"><div>East<hr></div><div>North<hr></div><div>West<hr></div><div>South<hr></div></div>
+
+<div id="chart" style='width:630px; height:960px;'></div>
 
 <script type="text/javascript">
-var margin = { top: 150, right: 2, bottom: 2, left: 150 },
-  cellSize=30;
+var margin = { top: 127, right: 2, bottom: 2, left: 105 },
+  cellSize=31;
   col_number=16;
   row_number=15;
   width = cellSize*col_number, 
   height = cellSize*row_number,
-  colors = ['#f0f0f0','#ff2700'];
+  colors = ['#ffffff','#ff2700'];
   hcrow = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
-  hccol = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] 
+  hccol = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
+  insignificant = "#d7d7d7"
 
   rowLabel = ['CHI @ CAR','HOU @ DAL','ARZ @ DEN','BUF @ DET','MIN @ GB','BAL @ IND','PIT @ JAC','CIN @ NE','TB @ NO','ATL @ NYG','STL @ PHI','NYJ @ SD','KC @ SF','CLE @ TEN','SEA @ WAS'], 
   colLabel = ['BUF','NE','MIA','NYJ','CIN','BAL','PIT','CLE','SD','DEN','KC','OAK','IND','HOU','TEN','JAC'];
@@ -81,12 +37,14 @@ function(d) {
     row:   +d.row_idx,
     col:   +d.col_idx,
     col_name: d.col_name,
+    game: d.row_name,
     value: +d.diff,
     home: d.home,
     away: d.away,
     initial_chances: +d.initial_chances,
     if_home: +d.if_home,
-    if_away: +d.if_away
+    if_away: +d.if_away,
+    sig: +d.sig
   };
 },
 
@@ -114,7 +72,7 @@ function(error, data) {
       .attr("x", 0)
       .attr("y", function (d, i) { return (hcrow.indexOf(i+1)) * cellSize; })
       .style("text-anchor", "end")
-      .attr("transform", "translate(-15," + cellSize / 1.5 + ")")
+      .attr("transform", "translate(-10," + cellSize / 1.5 + ")")
       .attr("class", function (d,i) { return "rowLabel mono r"+i;} ) 
       .on("mouseover", function(d) {d3.select(this).classed("text-hover",true);})
       .on("mouseout" , function(d) {d3.select(this).classed("text-hover",false);})
@@ -145,33 +103,59 @@ function(error, data) {
         .attr("class", function(d){return "cell cell-border cr"+(d.row-1)+" cc"+(d.col-1);})
         .attr("width", cellSize)
         .attr("height", cellSize)
-        .style("fill", function(d) { return colorScale(d.value); })
-        .on("mouseover", function(d){
+        .style("fill", function(d) { 
+            return colorScale(d.value)
+          })
+        .on("mouseover", function(d,i){
                d3.select(this)
                 .classed("cell-hover",true)
                 .style("fill","#6bb2d5")
+
+              var row_value = ".cr"+(d.row-1);
+              var col_value = ".cc"+(d.col-1);
+
                d3.selectAll(".rowLabel").classed("text-highlight",function(r,ri){ return ri==(d.row-1);});
                d3.selectAll(".colLabel").classed("text-highlight",function(c,ci){ return ci==(d.col-1);});
+               d3.selectAll(".cell").style("opacity","0.3");
+               d3.selectAll(row_value).style("opacity","1");
+               d3.selectAll(col_value).style("opacity","1");
 
-              
+
+                var initial_chances = parseFloat((d.initial_chances*100).toString()).toFixed(1);
+                var homegap = parseFloat(((d.if_home-d.initial_chances)*100).toString()).toFixed(1);
+                var awaygap = parseFloat(((d.if_away-d.initial_chances)*100).toString()).toFixed(1);
+                var swing = parseFloat(Math.abs(d.value*100).toString()).toFixed(1);
+
+                if(d.if_home-d.initial_chances>0){
+                  homegap = "+" + homegap;
+                }
+
+                if(d.if_away-d.initial_chances>0){
+                  awaygap = "+" + awaygap;
+                };
+
+              document.getElementById('game').innerHTML = d.game;
               document.getElementById('selectedteam').innerHTML = d.col_name;
-              document.getElementById('initial_chances').innerHTML = Math.round(d.initial_chances*1000)/10+"%";
-              document.getElementById('homechances').innerHTML = Math.round(d.if_home*1000)/10+"%";
+              document.getElementById('selectedteam2').innerHTML = d.col_name;
+              document.getElementById('initial_chances').innerHTML = initial_chances+"%";
+              document.getElementById('homechances').innerHTML = homegap;
               document.getElementById('hometeam').innerHTML = d.home;
-              //document.getElementById('homeimprov').innerHTML = Math.round((d.if_home-d.initial_chances)*1000)/10+"%";
-              document.getElementById('awaychances').innerHTML = Math.round(d.if_away*1000)/10+"%";
+              document.getElementById('awaychances').innerHTML = awaygap;
               document.getElementById('awayteam').innerHTML = d.away;
-              //document.getElementById('awayimprov').innerHTML = Math.round((d.if_away-d.initial_chances)*1000)/10+"%";
-              document.getElementById('gap').innerHTML = Math.round(Math.abs(d.value)*1000)/10+"%";
+              document.getElementById('gap').innerHTML = swing;
               document.getElementById('explanation').setAttribute('style','visibility: visible')
 
         })
         .on("mouseout", function(){
                d3.select(this)
                 .classed("cell-hover",false)
-                .style("fill", function(d) { return colorScale(d.value); });
+                .style("fill", function(d) { 
+                    return colorScale(d.value);
+                  });
+                 
                d3.selectAll(".rowLabel").classed("text-highlight",false);
                d3.selectAll(".colLabel").classed("text-highlight",false);
+               d3.selectAll(".cell").style("opacity","1");
         });
 
 
@@ -180,10 +164,21 @@ function(error, data) {
         .data(data,function(d){return d.row+":"+d.col;})
         .enter()
         .append("text")
-        .text(function(d){return Math.round(d.value*100)+"%"})
+        .text(function(d){
+          return Math.round(d.value*100)
+        })
         .style("text-anchor","middle")
+        .style("fill",function(d){
+          if(d.value>.09999) {
+            return "#ffffff"
+          }
+          else{
+            return "#737373"
+          }
+
+        })
         .attr("x", function(d) { return hccol.indexOf(d.col) * cellSize + cellSize/2;})
-        .attr("y", function(d) { return hcrow.indexOf(d.row) * cellSize + cellSize/1.6; })
+        .attr("y", function(d) { return hcrow.indexOf(d.row) * cellSize + cellSize/1.55; })
         .attr("class", "celllabel");
 
 
@@ -191,7 +186,7 @@ function(error, data) {
 // Change ordering of cells
 
   function sortbylabel(rORc,i){
-       var t = svg.transition().duration(300);
+       var t = svg.transition().duration(350);
        var diffs=[];
        var sorted; // sorted is zero-based index
        d3.selectAll(".c"+rORc+i) 
@@ -200,6 +195,9 @@ function(error, data) {
           })
        ;
        if(rORc=="r"){ // sort row
+
+         document.getElementById('divisionnames').setAttribute('style','opacity: 0')
+
          sorted=d3.range(col_number).sort(function(a,b){return diffs[b]-diffs[a];});
          t.selectAll(".cell")
            .attr("x", function(d) {;
@@ -212,6 +210,7 @@ function(error, data) {
           .attr("x", function (d, i) { return sorted.indexOf(i) * cellSize; })
          ;
        }else{ // sort column
+
          sorted=d3.range(row_number).sort(function(a,b){return diffs[b]-diffs[a];});
          t.selectAll(".cell")
            .attr("y", function(d) {return sorted.indexOf(d.row-1) * cellSize; })
@@ -232,7 +231,24 @@ function(error, data) {
 </script>
 
 <div id="explanation">
-<p><span id="selectedteam">HOU</span> has a <span id="initial_chances">15.1%</span> chance of making the playoffs. Their updated chances are <span id="homechances">14.5%</span> if <span id="hometeam">CAR</span> wins at home or <span id="awaychances">45.5%</span> if <span id="awayteam">DEN</span> wins, a <span id="gap">45.1%</span> swing.</p>
+
+<div class="explanationhead">What <span id="game">*</span> means for <span id="selectedteam">*</span></div>
+<div class="playoffheader"><span id="selectedteam2">*</span> playoff chances<hr></div>
+<div class="numbersrow">
+<div id="number1"><span id="initial_chances">*</span></div>
+<div id="number2"><span id="awaychances">*</span></div>
+<div id="number3"><span id="homechances">*</span></div>
+<div id="number3"><span id="gap">*</span></div>
+</div>
+<div class="labelsrow">
+<div id="label1">Pregame</div>
+<div id="label2">If <span id="awayteam">*</span> wins</div>
+<div id="label3">If <span id="hometeam">*</span> wins</div>
+<div id="label4">Swing</div>
+</div>
+
+</div>
+
 </div>
 
 
