@@ -1,6 +1,6 @@
 //sortable heatmap codebase created by ianyfchang http://bl.ocks.org/ianyfchang/8119685//
 
-var margin = {top: 117, right: 2, bottom: 2, left: 105},
+var margin = {top: 114, right: 2, bottom: 2, left: 105},
   cellSize = 31;
   col_number = 16;
   row_number = 9;
@@ -90,7 +90,7 @@ function(error, data) {
       return hccol.indexOf(i + 1) * cellSize;
     })
     .style('text-anchor', 'middle')
-    .attr('transform', 'translate('+cellSize / 2 + ',-15)')
+    .attr('transform', 'translate('+cellSize / 2 + ',-12)')
     .attr('class',  function (d,i) {
       return 'colLabel mono c' + i;
     })
@@ -171,11 +171,21 @@ function(error, data) {
 
           if(d.if_home-d.initial_chances > 0) {
             homegap = '+' + homegap;
-          };
+            document.getElementById('homechances').setAttribute('style','color: #60BD68')
+          }
+          else if(d.if_home-d.initial_chances < 0) {
+            document.getElementById('homechances').setAttribute('style','color: #ff2700')
+          }
+
 
           if(d.if_away-d.initial_chances > 0) {
             awaygap = '+' + awaygap;
-          };
+            document.getElementById('awaychances').setAttribute('style','color: #60BD68')
+          }
+          else if(d.if_away-d.initial_chances < 0) {
+            document.getElementById('awaychances').setAttribute('style','color: #ff2700')
+          }
+
 
           if(initial_chances === '0.0') {
            initial_chances = '<0.1';
@@ -193,12 +203,8 @@ function(error, data) {
             swing = '<0.1';
           }
 
-
-
-
           document.getElementById('game').innerHTML = d.game;
           document.getElementById('selectedteam').innerHTML = d.col_name;
-          document.getElementById('selectedteam2').innerHTML = d.col_name;
           document.getElementById('initial_chances').innerHTML = initial_chances+'%';
           document.getElementById('homechances').innerHTML = homegap;
           document.getElementById('hometeam').innerHTML = d.home;
@@ -210,6 +216,7 @@ function(error, data) {
         };
       })
       .on('mouseout', function() {
+
         d3.select(this)
           .classed('cell-hover',false)
           .style('fill', function(d) { 
@@ -318,7 +325,7 @@ function(error, data) {
         });
       t.selectAll('.celllabel')
         .attr('y', function(d) {
-          return sorted.indexOf(d.row - 1) * cellSize + cellSize / 1.6;
+          return sorted.indexOf(d.row - 1) * cellSize + cellSize / 1.55;
         });
 
       t.selectAll('.rowLabel')

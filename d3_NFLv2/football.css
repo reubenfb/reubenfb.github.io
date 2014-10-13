@@ -2,7 +2,7 @@
 
 .container {
   width: 610px;
-  height: 585px;
+  height: 562px;
   background-color: #f0f0f0;
   color: #3c3c3c;
   font-family: AtlasGrotesk;
@@ -33,7 +33,7 @@
   font-weight: 700;
   width: 496px;
   position: relative;
-  left: 100px;
+  left: 104px;
   top: 87px;
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5;
@@ -42,28 +42,32 @@
 
 #divisionnames div {
   width: 25%;
+  font-size: 9.8pt;
   display: inline-block;
   text-align: center;
 }
 
 #divisionnames hr {
+  width: 95%;
   background-color: #999999;
   height: 1px;
-  margin: 5px;
   border: none;
+  text-align: auto;
 }
 
 
 /* TABLE FORMATTING - LARGELY HAPPENS IN D3 */
 
 rect.cell-border {
+  cursor: crosshair;
   stroke: #fff;
   stroke-width:0.4px;   
 }
 
 text.mono {
-  cursor: crosshair;
-  font-size: 9.9pt;
+  cursor: pointer;
+  cursor: hand;
+  font-size: 9.8pt;
 }
 
 text.celllabel {
@@ -86,17 +90,24 @@ text.text-hover {
 
 #explanation {
   position: absolute;
-  top: 455px;
+  top: 452px;
   left: 115px;
   width: 496px;
   font-size: 18px;
+  text-align: center;
   visibility: hidden;
 }
 
 .playoffheader {
-  margin-top: 17px;
-  font-size: 13px;
-  text-align: center;
+  margin-top: 13px;
+  margin-bottom: 10px;
+}
+
+.playoffheader hr {
+  background-color: #999999;
+  height: 1px;
+  border: none;
+  width: 98%;
 }
 
 .numberrows {
@@ -107,7 +118,6 @@ text.text-hover {
 .numbersrow div {
   width: 25%;
   display: inline-block;
-  text-align: center;
   font-family: DecimaMonoPro;
   margin-bottom: 0px;
 }
@@ -115,7 +125,6 @@ text.text-hover {
 .labelsrow div{ 
   width: 25%;
   display: inline-block;
-  text-align: center;
   vertical-align: top;
   font-size: 13px;
   margin-top: 2px;
