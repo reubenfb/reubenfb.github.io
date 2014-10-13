@@ -48,6 +48,7 @@ function(error, data) {
   colSortOrder = true,
   row_value = '',
   col_value = '',
+  text_value = '',
   initial_chances = '',
   homegap = '',
   awaygap = '',
@@ -139,7 +140,7 @@ function(error, data) {
         //set cell class to hover
         d3.select(this)
           .classed('cell-hover',true)
-          .style('fill','#6bb2d5')
+          .style('fill','#3c3c3c')
 
         //set row and column label classes and fade out non-selected
         d3.selectAll('.rowLabel').classed('text-highlight',function(r,ri) {
@@ -152,6 +153,12 @@ function(error, data) {
         d3.selectAll(row_value).style('opacity','1');
         d3.selectAll(col_value).style('opacity','1');
 
+        //make text white
+        d3.selectAll('.celllabel')
+        .filter(row_value)
+        .filter(col_value)
+        .style("fill", '#ffffff');
+
         //change explanation text at bottom
 
         if (d.sig === 1) {
@@ -161,6 +168,7 @@ function(error, data) {
           awaygap = parseFloat(((d.if_away-d.initial_chances) * 100).toString()).toFixed(1);
           swing = parseFloat(Math.abs(d.value * 100).toString()).toFixed(1);
 
+
           if(d.if_home-d.initial_chances > 0) {
             homegap = '+' + homegap;
           };
@@ -168,6 +176,25 @@ function(error, data) {
           if(d.if_away-d.initial_chances > 0) {
             awaygap = '+' + awaygap;
           };
+
+          if(initial_chances === '0.0') {
+           initial_chances = '<0.1';
+          }
+
+          if(homegap === '0.0') {
+            homegap = '~0.0';
+          }
+
+          if(awaygap === '0.0') {
+            awaygap = '~0.0';
+          }
+
+          if(swing === '0.0') {
+            swing = '<0.1';
+          }
+
+
+
 
           document.getElementById('game').innerHTML = d.game;
           document.getElementById('selectedteam').innerHTML = d.col_name;
@@ -183,20 +210,32 @@ function(error, data) {
         };
       })
       .on('mouseout', function() {
-          d3.select(this)
-            .classed('cell-hover',false)
-            .style('fill', function(d) { 
-              if(d.sig === 0) {
-                return insignificant
-              }
-              else {
-                return colorScale(d.value);
-              }
-            });
-               
-             d3.selectAll('.rowLabel').classed('text-highlight',false);
-             d3.selectAll('.colLabel').classed('text-highlight',false);
-             d3.selectAll('.cell').style('opacity','1');
+        d3.select(this)
+          .classed('cell-hover',false)
+          .style('fill', function(d) { 
+            if(d.sig === 0) {
+              return insignificant;
+            }
+            else {
+              return colorScale(d.value);
+            }
+          });
+             
+        d3.selectAll('.rowLabel').classed('text-highlight',false);
+        d3.selectAll('.colLabel').classed('text-highlight',false);
+        d3.selectAll('.cell').style('opacity','1');
+
+        d3.selectAll('.celllabel')
+        .filter(row_value)
+        .filter(col_value)
+        .style('fill',function(d) {
+          if(d.value>.09999) {
+            return '#ffffff'
+          }
+          else {
+            return '#737373'
+          }
+        })
 
       });
 
@@ -228,7 +267,9 @@ function(error, data) {
       .attr('y', function(d) {
         return hcrow.indexOf(d.row) * cellSize + cellSize / 1.55;
       })
-      .attr('class', 'celllabel');
+      .attr('class', function(d) {
+        return 'celllabel cr'+(d.row - 1)+' cc'+(d.col - 1);
+      })
 
 
 // Change ordering of cells
