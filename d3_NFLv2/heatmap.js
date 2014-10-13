@@ -9,7 +9,7 @@ var margin = {top: 114, right: 2, bottom: 2, left: 105},
   colors = ['#ffffff','#ff2700'];
   hcrow = [1,2,3,4,5,6,7,8,9],
   hccol = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
-  insignificant = '#d7d7d7'
+  insignificant = '#dddddd'
 
   rowLabel = ['HOU @ DAL','ARZ @ DEN','BUF @ DET','BAL @ IND','PIT @ JAC','CIN @ NE','NYJ @ SD','KC @ SF','CLE @ TEN'], 
   colLabel = ['BUF','NE','MIA','NYJ','CIN','BAL','PIT','CLE','SD','DEN','KC','OAK','IND','HOU','TEN','JAC'];
