@@ -14,7 +14,7 @@ var margin = {top: 114, right: 2, bottom: 2, left: 98},
   rowLabel = ['HOU @ DAL','ARZ @ DEN','BUF @ DET','BAL @ IND','PIT @ JAC','CIN @ NE','NYJ @ SD','KC @ SF','CLE @ TEN'], 
   colLabel = ['BUF','NE','MIA','NYJ','CIN','BAL','PIT','CLE','SD','DEN','KC','OAK','IND','HOU','TEN','JAC'];
 
-d3.tsv('data_heatmap.tsv', function(d) {
+d3.tsv('./data/data_heatmap.tsv', function(d) {
 
   return {
     row: +d.row_idx,
