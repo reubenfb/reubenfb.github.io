@@ -1,8 +1,12 @@
 /* BODY AND TITLE FORMATTING */
 
+body{
+  width: 575px;
+  margin: 0px;
+}
+
 .container {
-  width: 610px;
-  height: 562px;
+  height: 550px;
   background-color: #f0f0f0;
   color: #3c3c3c;
   font-family: AtlasGrotesk;
@@ -10,7 +14,6 @@
 }
 
 .title {
-  width: 610px;
   position: absolute;
   left: 20px;
   top: 15px;
@@ -34,9 +37,9 @@
 
 #divisionnames {
   font-weight: 700;
-  width: 496px;
+  width: 464px;
   position: relative;
-  left: 104px;
+  left: 98px;
   top: 87px;
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5;
@@ -45,7 +48,7 @@
 
 #divisionnames div {
   width: 25%;
-  font-size: 9.8pt;
+  font-size: 9.1pt;
   display: inline-block;
   text-align: center;
 }
@@ -70,7 +73,7 @@ rect.cell-border {
 text.mono {
   cursor: pointer;
   cursor: hand;
-  font-size: 9.8pt;
+  font-size: 9.1pt;
 }
 
 text.celllabel {
@@ -93,9 +96,9 @@ text.text-hover {
 
 #explanation {
   position: absolute;
-  top: 452px;
-  left: 115px;
-  width: 496px;
+  top: 430px;
+  left: 98px;
+  width: 464px;
   font-size: 18px;
   text-align: center;
   display: none;
@@ -147,7 +150,7 @@ a {
 .mobile-container {
   visibility: hidden;
   position: absolute;
-  top: 8px;
+  top: 0px;
   font-family: AtlasGrotesk;
   font-size: 3.8vw;
 }
@@ -178,7 +181,7 @@ a {
 }
 
 
-@media (max-width: 615px) {
+@media (max-width: 574px) {
   .container {
     visibility: hidden;
   }

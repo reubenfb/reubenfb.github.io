@@ -1,7 +1,7 @@
 //sortable heatmap codebase created by ianyfchang http://bl.ocks.org/ianyfchang/8119685//
 
-var margin = {top: 114, right: 2, bottom: 2, left: 105},
-  cellSize = 31;
+var margin = {top: 114, right: 2, bottom: 2, left: 98},
+  cellSize = 29;
   col_number = 16;
   row_number = 9;
   width = cellSize * col_number, 
@@ -272,7 +272,7 @@ function(error, data) {
         return hccol.indexOf(d.col) * cellSize + cellSize / 2;
       })
       .attr('y', function(d) {
-        return hcrow.indexOf(d.row) * cellSize + cellSize / 1.55;
+        return hcrow.indexOf(d.row) * cellSize + cellSize / 1.49;
       })
       .attr('class', function(d) {
         return 'celllabel cr'+(d.row - 1)+' cc'+(d.col - 1);
@@ -325,7 +325,7 @@ function(error, data) {
         });
       t.selectAll('.celllabel')
         .attr('y', function(d) {
-          return sorted.indexOf(d.row - 1) * cellSize + cellSize / 1.55;
+          return sorted.indexOf(d.row - 1) * cellSize + cellSize / 1.49;
         });
 
       t.selectAll('.rowLabel')
