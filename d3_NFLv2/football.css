@@ -98,7 +98,7 @@ text.text-hover {
   width: 496px;
   font-size: 18px;
   text-align: center;
-  visibility: hidden;
+  display: none;
 }
 
 .playoffheader {
@@ -148,17 +148,24 @@ a {
   visibility: hidden;
   position: absolute;
   top: 8px;
-  height: 560px;
-  background-color: #f0f0f0;
   font-family: AtlasGrotesk;
-  font-size: 18px;
+  font-size: 3.8vw;
+}
+
+.mobile-container img{
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }
 
 .interactive-button {
-  width: 30%;
-  padding: 1%;
-  height: 60px;
+  position: absolute;
+  top: 79.4%;
+  left: 0;
+  right: 0;
   margin: 0 auto;
+  width: 36%;
+  padding: 2%;
   background-color: #3c3c3c;
   text-align: center;
   color: white;
@@ -171,7 +178,7 @@ a {
 }
 
 
-@media (max-width: 630px) {
+@media (max-width: 615px) {
   .container {
     visibility: hidden;
   }

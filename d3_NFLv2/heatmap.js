@@ -211,7 +211,7 @@ function(error, data) {
           document.getElementById('awaychances').innerHTML = awaygap;
           document.getElementById('awayteam').innerHTML = d.away;
           document.getElementById('gap').innerHTML = swing;
-          document.getElementById('explanation').setAttribute('style','visibility: visible')
+          document.getElementById('explanation').setAttribute('style','display: block')
 
         };
       })
