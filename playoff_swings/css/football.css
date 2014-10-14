@@ -152,7 +152,6 @@ a {
   visibility: hidden;
   position: absolute;
   top: 0px;
-  font-size: 3.8vw;
 }
 
 .mobile-container img{
@@ -178,6 +177,7 @@ a {
 .interactive-button div {
   display: table-cell; 
   vertical-align: middle;
+  font-size: 3.8vw;
 }
 
 
