@@ -1,0 +1,234 @@
+/* BODY AND TITLE FORMATTING */
+
+body {
+  width: 575px;
+  margin: 0px;
+  font-family: AtlasGrotesk;
+}
+
+.container {
+  height: 598px;
+  background-color: #f0f0f0;
+  color: #3c3c3c;
+  visibility: visible;
+}
+
+.title {
+  position: absolute;
+  left: 20px;
+  margin-top: 15px;
+  display: inline;
+}
+
+.title h1 {
+  font-size: 23px;
+  font-weight: 700;
+  margin-top: 0px;
+  margin-bottom: 3px;
+}
+
+.title h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 0px;
+}
+
+
+/* DIVISION HEADERS FORMATTING */
+
+#divisionnames {
+  font-weight: 700;
+  width: 464px;
+  position: relative;
+  left: 98px;
+  top: 73px;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5;
+  transition: opacity 0.5s;
+}
+
+#divisionnames div {
+  width: 25%;
+  font-size: 9.1pt;
+  display: inline-block;
+  text-align: center;
+}
+
+#divisionnames hr {
+  width: 95%;
+  background-color: #999999;
+  height: 1px;
+  border: none;
+  text-align: auto;
+}
+
+
+/* TABLE FORMATTING - LARGELY HAPPENS IN D3 */
+
+rect.cell-border {
+  cursor: crosshair;
+  stroke: #fff;
+  stroke-width:0.4px;   
+}
+
+text.mono {
+  cursor: pointer;
+  cursor: hand;
+  font-size: 9.1pt;
+}
+
+text.celllabel {
+  font-size: 11pt;
+  font-family: DecimaMonoPro;
+  pointer-events: none;
+}
+
+text.text-highlight {
+  fill: #ff2700;
+  font-weight: 700;
+}
+text.text-hover {
+  fill: #ff2700;
+  font-weight: 700;
+}
+
+
+/* BOTTOM MATH FORMATTING */
+
+#explanation {
+  position: absolute;
+  top: 474px;
+  left: 98px;
+  width: 464px;
+  font-size: 18px;
+  text-align: center;
+  display: none;
+}
+
+.playoffheader {
+  margin-top: 13px;
+  margin-bottom: 10px;
+}
+
+.playoffheader hr {
+  background-color: #999999;
+  height: 1px;
+  border: none;
+  width: 98%;
+}
+
+.numberrows {
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.numbersrow div {
+  width: 25%;
+  display: inline-block;
+  font-family: DecimaMonoPro;
+  margin-bottom: 0px;
+}
+
+.labelsrow div{ 
+  width: 25%;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+span {
+  font-weight: 700;
+}
+
+/* MOBILE DESIGN */
+
+
+a {
+  text-decoration: none;
+}
+
+.mobile-container {
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  font-size: 3.8vw;
+}
+
+.mobile-container img{
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+.interactive-button {
+  position: absolute;
+  top: 80.4%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 36%;
+  padding: 2%;
+  background-color: #3c3c3c;
+  text-align: center;
+  color: white;
+  display: table;
+}
+
+.interactive-button div {
+  display: table-cell; 
+  vertical-align: middle;
+}
+
+
+@media (max-width: 574px) {
+  .container {
+    visibility: hidden;
+  }
+  .mobile-container {
+    visibility: visible;
+  }
+}
+
+
+/* FONTS */
+
+@font-face {
+  font-family: DecimaMonoPro;
+  src: url('fonts/DecimaMonoPro-Bold.eot');
+  /* IE9 Compat Modes */
+  src: url('fonts/DecimaMonoPro-Bold.eot?#iefix') format('embedded-opentype'), url('fonts/DecimaMonoPro-Bold.woff') format('woff'), url('fonts/DecimaMonoPro-Bold.ttf') format('truetype'), url('fonts/DecimaMonoPro-Bold.svg#892f3d29c57543b364381db14cc3d2b6') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 700; 
+}
+
+@font-face {
+  font-family: DecimaMonoPro;
+  src: url('fonts/DecimaMonoPro.eot');
+  /* IE9 Compat Modes */
+  src: url('fonts/DecimaMonoPro.eot?#iefix') format('embedded-opentype'), url('fonts/DecimaMonoPro.woff') format('woff'), url('fonts/DecimaMonoPro.ttf') format('truetype'), url('fonts/DecimaMonoPro.svg#05b38ec6b99e47514c4477b29763ce0a') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400; 
+}
+
+@font-face {
+  font-family: AtlasGrotesk;
+  src: url('fonts/AtlasGrotesk-Bold.eot');
+  /* IE9 Compat Modes */
+  src: url('fonts/AtlasGrotesk-Bold.eot?#iefix') format('embedded-opentype'), url('fonts/AtlasGrotesk-Bold.woff') format('woff'), url('fonts/AtlasGrotesk-Bold.ttf') format('truetype'), url('fonts/AtlasGrotesk-Bold.svg#e865ba5279b8b4f4d93cf0b04320407c') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 700; 
+}
+
+@font-face {
+  font-family: AtlasGrotesk;
+  src: url('fonts/AtlasGrotesk-Regular.eot');
+  /* IE9 Compat Modes */
+  src: url('fonts/AtlasGrotesk-Regular.eot?#iefix') format('embedded-opentype'), url('fonts/AtlasGrotesk-Regular.woff') format('woff'), url('fonts/AtlasGrotesk-Regular.ttf') format('truetype'), url('fonts/AtlasGrotesk-Regular.svg#4c452fbe91af52f13ffe1a98c5a30926') format('svg');
+  /* Legacy iOS */
+  font-style: normal;
+  font-weight: 400; 
+}
