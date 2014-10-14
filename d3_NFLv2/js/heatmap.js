@@ -1,20 +1,20 @@
 //sortable heatmap codebase created by ianyfchang http://bl.ocks.org/ianyfchang/8119685//
 
-var margin = {top: 114, right: 2, bottom: 2, left: 98},
+var margin = {top: 100, right: 2, bottom: 2, left: 98},
   cellSize = 29;
   col_number = 16;
-  row_number = 9;
+  row_number = 11;
   width = cellSize * col_number, 
   height = cellSize * row_number,
   colors = ['#ffffff','#ff2700'];
-  hcrow = [1,2,3,4,5,6,7,8,9],
+  hcrow = [1,2,3,4,5,6,7,8,9,10,11],
   hccol = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16],
   insignificant = '#dddddd'
 
-  rowLabel = ['HOU @ DAL','ARZ @ DEN','BUF @ DET','BAL @ IND','PIT @ JAC','CIN @ NE','NYJ @ SD','KC @ SF','CLE @ TEN'], 
-  colLabel = ['BUF','NE','MIA','NYJ','CIN','BAL','PIT','CLE','SD','DEN','KC','OAK','IND','HOU','TEN','JAC'];
+  rowLabel = ['NYJ @ NE','CIN @ IND','TEN @ WAS','MIA @ CHI','CLE @ JAC','CAR @ GB','ATL @ BAL','MIN @ BUF','KC @ SD','SF @ DEN','HOU @ PIT'], 
+  colLabel = ['NE','BUF','MIA','NYJ','CIN','BAL','CLE','PIT','SD','DEN','KC','OAK','IND','HOU','TEN','JAC'];
 
-d3.tsv('./data/data_heatmap.tsv', function(d) {
+d3.csv('./data/afc.csv', function(d) {
 
   return {
     row: +d.row_idx,
@@ -35,7 +35,7 @@ d3.tsv('./data/data_heatmap.tsv', function(d) {
 function(error, data) {
 
   var colorScale = d3.scale.linear()
-    .domain([0,.15])
+    .domain([0,.2])
     .range(colors),
 
   svg = d3.select('#chart').append('svg')
@@ -236,7 +236,7 @@ function(error, data) {
         .filter(row_value)
         .filter(col_value)
         .style('fill',function(d) {
-          if(d.value>.09999) {
+          if(d.value>.095) {
             return '#ffffff'
           }
           else {
@@ -261,7 +261,7 @@ function(error, data) {
       })
       .style('text-anchor','middle')
       .style('fill',function(d) {
-        if(d.value>.09999) {
+        if(d.value>.095) {
           return '#ffffff'
         }
         else {

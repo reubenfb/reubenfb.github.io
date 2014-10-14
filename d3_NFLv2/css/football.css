@@ -1,28 +1,29 @@
 /* BODY AND TITLE FORMATTING */
 
-body{
+body {
   width: 575px;
   margin: 0px;
+  font-family: AtlasGrotesk;
 }
 
 .container {
-  height: 550px;
+  height: 598px;
   background-color: #f0f0f0;
   color: #3c3c3c;
-  font-family: AtlasGrotesk;
   visibility: visible;
 }
 
 .title {
   position: absolute;
   left: 20px;
-  top: 15px;
+  margin-top: 15px;
   display: inline;
 }
 
 .title h1 {
   font-size: 23px;
   font-weight: 700;
+  margin-top: 0px;
   margin-bottom: 3px;
 }
 
@@ -40,7 +41,7 @@ body{
   width: 464px;
   position: relative;
   left: 98px;
-  top: 87px;
+  top: 73px;
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5;
   transition: opacity 0.5s;
@@ -96,7 +97,7 @@ text.text-hover {
 
 #explanation {
   position: absolute;
-  top: 430px;
+  top: 474px;
   left: 98px;
   width: 464px;
   font-size: 18px;
@@ -151,7 +152,6 @@ a {
   visibility: hidden;
   position: absolute;
   top: 0px;
-  font-family: AtlasGrotesk;
   font-size: 3.8vw;
 }
 
@@ -163,7 +163,7 @@ a {
 
 .interactive-button {
   position: absolute;
-  top: 79.4%;
+  top: 80.4%;
   left: 0;
   right: 0;
   margin: 0 auto;
